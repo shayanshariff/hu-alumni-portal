@@ -1,6 +1,9 @@
-import "./style.css";
+import "./login.css";
+import {
+  Link,
+} from "react-router-dom";
 
-function App() {
+function Login() {
   return (
     <>
     
@@ -39,7 +42,7 @@ function App() {
         <h1>Hello!</h1>
         <p>Please login to access the Alumni Portal.</p>
         <button className="ghost" id="signIn">
-          Back
+        <Link to="/"  style={{ color: '#FFF' }}>Back</Link>
         </button>
       </div>
     </div>
@@ -51,4 +54,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;
