@@ -1,6 +1,6 @@
-import "./style.css";
+import "./fpasswd.css";
 
-function App() {
+function Fpasswd() {
   return (
     <>
     <header>
@@ -49,4 +49,4 @@ function App() {
   );
 }
 
-export default App;
+export default Fpasswd;

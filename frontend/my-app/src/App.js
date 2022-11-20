@@ -7,6 +7,7 @@ import {
 
 import Login from './login';
 import Landing from './landing';
+import Fpasswd from "./fpasswd";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Landing />}/>
           <Route path="/login" element={<Login />}/>
+          <Route path="/forgot-pwd" element={<Fpasswd />}/>
         </Routes>
     </BrowserRouter>
 
