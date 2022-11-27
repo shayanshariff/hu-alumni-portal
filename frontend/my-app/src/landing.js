@@ -1,3 +1,4 @@
+import {Link} from "react-router-dom";
 
 function Landing() {
   return (
@@ -96,7 +97,7 @@ function Landing() {
           <p>Pleases click on get started to login into your account.</p>
           <div className="d-flex justify-content-center justify-content-lg-start">
             <a href="{{url_for('login')}}" className="btn-get-started">
-              Get Started
+              <Link to="/login" style={{ color: '#FFF' }}>Get Started</Link>
             </a>
           </div>
         </div>

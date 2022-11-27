@@ -1,4 +1,4 @@
-
+import {Link} from "react-router-dom";
 
 function Login() {
   return (
@@ -62,7 +62,7 @@ function Login() {
                     </button>
                   </div>
                   <a className="small text-muted" href="#!">
-                    Forgot password?
+                   <Link to="/forgot-pwd">Forgot pasword?</Link> 
                   </a>
                   <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
                     Don't have an account?{" "}
