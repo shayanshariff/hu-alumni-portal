@@ -1,4 +1,4 @@
-import "./fpasswd.css";
+// import "./fpasswd.js";
 
 function Fpasswd() {
   return (

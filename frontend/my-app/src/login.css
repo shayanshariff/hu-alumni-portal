@@ -12,7 +12,7 @@
     top: 0px;
     right: 0px;
 }
-header {
+h1 {
     margin-bottom: 0px;
     color:#854593;
     width: 100%;
@@ -46,8 +46,8 @@ body {
 	margin: -20px 0 50px;
 }
 
-h1 {
-	font-weight: bold;
+.login h1 {
+	
 	margin: 0;
 }
 
@@ -256,27 +256,3 @@ input {
 	width: 40px;
 }
 
-footer {
-    background-color: #222;
-    color: #fff;
-    font-size: 14px;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 999;
-}
-
-footer p {
-    margin: 10px 0;
-}
-
-footer i {
-    color: red;
-}
-
-footer a {
-    color: #3c97bf;
-    text-decoration: none;
-}
