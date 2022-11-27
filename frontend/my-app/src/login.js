@@ -1,12 +1,12 @@
 
-
+import React from "react";
 function Login() {
   return (
-    <>    
-   <section className="vh-100" style={{ backgroundColor: "#9A616D" }}>
-  <div className="container py-5 h-100">
+    <>   
+   <section className="vh-100" style={{ backgroundColor: "#854593" }}>
+  <div className="container py-0 h-100">
     <div className="row d-flex justify-content-center align-items-center h-100">
-      <div className="col col-xl-10">
+      <div className="col col-xl-8">
         <div className="card" style={{ borderRadius: "1rem" }}>
           <div className="row g-0">
             <div className="col-md-6 col-lg-5 d-none d-md-block">
@@ -25,13 +25,13 @@ function Login() {
                       className="fas fa-cubes fa-2x me-3"
                       style={{ color: "#ff6219" }}
                     />
-                    <span className="h1 fw-bold mb-0">Logo</span>
+                    <span className="h1 fw-bold mb-0">Sign In </span>
+                    
                   </div>
                   <h5
                     className="fw-normal mb-3 pb-3"
                     style={{ letterSpacing: 1 }}
                   >
-                    Sign into your account
                   </h5>
                   <div className="form-outline mb-4">
                     <input
@@ -57,6 +57,7 @@ function Login() {
                     <button
                       className="btn btn-dark btn-lg btn-block"
                       type="button"
+                      
                     >
                       Login
                     </button>
@@ -64,19 +65,7 @@ function Login() {
                   <a className="small text-muted" href="#!">
                     Forgot password?
                   </a>
-                  <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
-                    Don't have an account?{" "}
-                    <a href="#!" style={{ color: "#393f81" }}>
-                      Register here
-                    </a>
-                  </p>
-                  <a href="#!" className="small text-muted">
-                    Terms of use.
-                  </a>
-                  <a href="#!" className="small text-muted">
-                    Privacy policy
-                  </a>
-                </form>
+                  </form>
               </div>
             </div>
           </div>
