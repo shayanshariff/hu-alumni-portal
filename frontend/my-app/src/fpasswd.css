@@ -46,6 +46,12 @@ body {
 	margin: -20px 0 50px;
 }
 
+.navbar-dark {
+    background-color: #854593 !important;
+    border: none !important;
+    border-width:0!important;
+}
+
 h0 {
 	font-weight: bold;
 	margin: 0;

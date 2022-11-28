@@ -74,6 +74,13 @@ a {
 	margin: 15px 0;
 }
 
+.navbar-dark {
+    background-color: #854593 !important;
+    border: none !important;
+    border-width:0!important;
+}
+
+
 button {
 	border-radius: 20px;
 	border: 1px solid #854593;
