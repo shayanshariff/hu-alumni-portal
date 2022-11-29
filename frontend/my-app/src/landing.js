@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 function Landing() {
   return (
     <>
@@ -28,37 +28,7 @@ function Landing() {
       __html: " .contact .info-item{background:#854593;} "
     }}
   />
-  {/* ======= Header ======= */}
-  <section id="topbar" className="topbar d-flex align-items-center">
-    <div className="container d-flex justify-content-center justify-content-md-between">
-      <div className="contact-info d-flex align-items-center">
-        <i className="bi bi-envelope d-flex align-items-center">
-          <a href="mailto:contact@example.com">alumni.portal@habib.edu.pk</a>
-        </i>
-        <i className="bi bi-phone d-flex align-items-center ms-4">
-          <span> +92 21 1110 42242 (HABIB)</span>
-        </i>
-      </div>
-      <div className="social-links d-none d-md-flex align-items-center">
-        <a href="https://twitter.com/habibuniversity" className="twitter">
-          <i className="bi bi-twitter" />
-        </a>
-        <a href="https://www.facebook.com/HabibUniversity" className="facebook">
-          <i className="bi bi-facebook" />
-        </a>
-        <a href="https://instagram.com/habibuniversity" className="instagram">
-          <i className="bi bi-instagram" />
-        </a>
-        <a
-          href="https://www.linkedin.com/company/habib-university/"
-          className="linkedin"
-        >
-          <i className="bi bi-linkedin" />
-        </a>
-      </div>
-    </div>
-  </section>
-  {/* End Top Bar */}
+
   <header id="header" className="header d-flex align-items-center">
     <div className="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="{{url_for('home')}}" className="logo d-flex align-items-center">
@@ -68,17 +38,7 @@ function Landing() {
           Habib University: Liberal Arts &amp; Sciences<span>.</span>
         </h1>
       </a>
-      <nav id="navbar" className="navbar">
-        <ul>
-          <li>
-            <a href="#hero">Home</a>
-          </li>
-          <li>
-            <a href="#contact">Contact Us</a>
-          </li>
-        </ul>
-      </nav>
-      {/* .navbar */}
+
       <i className="mobile-nav-toggle mobile-nav-show bi bi-list" />
       <i className="mobile-nav-toggle mobile-nav-hide d-none bi bi-x" />
     </div>
@@ -95,9 +55,7 @@ function Landing() {
           </h2>
           <p>Pleases click on get started to login into your account.</p>
           <div className="d-flex justify-content-center justify-content-lg-start">
-            <a href="{{url_for('login')}}" className="btn-get-started">
-              Get Started
-            </a>
+          <Link to={"/login"}  className="btn-get-started">Get Started</Link>
           </div>
         </div>
         <div className="col-lg-6 order-1 order-lg-2">

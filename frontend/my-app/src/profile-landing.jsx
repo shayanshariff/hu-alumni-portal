@@ -1,6 +1,7 @@
 import React from 'react';
 import './profile-landing.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from "react-router-dom";
 
 
 
@@ -48,7 +49,7 @@ class ProfileLanding extends React.Component {
                                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                             <circle cx="12" cy="7" r="4"></circle>
                                         </svg>
-                                        <a class="pt-1px d-none d-md-block" href="#">About</a>
+                                        <Link to={"/profile"}  className="pt-1px d-none d-md-block">About</Link>
                                     </li>
                                     <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
                                         

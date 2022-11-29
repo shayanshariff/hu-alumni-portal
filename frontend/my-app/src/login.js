@@ -1,5 +1,6 @@
 import myimage from './campus-view-4.jpg';
 import React from "react";
+import { Link } from "react-router-dom";
 function Login() {
   return (
     <>   
@@ -62,9 +63,8 @@ function Login() {
                       Login
                     </button>
                   </div>
-                  <a className="small text-muted" href="#!">
-                    Forgot password?
-                  </a>
+                  <Link to={"/forgot-pwd"}  className="small text-muted">Forgot Password?</Link>
+
                   </form>
               </div>
             </div>
