@@ -5,8 +5,6 @@ export default function ProfilePageEdit() {
   return (
     <>
     <meta charSet="utf-8" />
-    {/*  This file has been downloaded from bootdey.com @bootdey on twitter */}
-    {/*  All snippets are MIT license http://bootdey.com/license */}
     <title>user profile bio graph and total sales - Bootdey.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
