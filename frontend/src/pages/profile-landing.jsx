@@ -25,14 +25,9 @@ class ProfileLanding extends React.Component {
                                         <img class="profile-pic" src="https://therichpost.com/wp-content/uploads/2021/03/avatar6.png" alt="profile" />
                                         <span class="profile-name">Jassa Jas</span>
                                     </div>
-                                    <div class="d-none d-md-block">
-                                        <button class="btn btn-primary btn-icon-text btn-edit-profile">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit btn-icon-prepend">
-                                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                            </svg> Edit profile
-                                        </button>
-                                    </div>
+                                    
+                                        
+                                    
                                 </div>
                             </div>
                             <div class="header-links">
@@ -246,14 +241,7 @@ class ProfileLanding extends React.Component {
                                                 </svg>
                                                 <p class="d-none d-md-block ml-2">Comment</p>
                                             </a>
-                                            <a href="javascript:;" class="d-flex align-items-center text-muted">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share icon-md">
-                                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                                    <polyline points="16 6 12 2 8 6"></polyline>
-                                                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                                                </svg>
-                                                <p class="d-none d-md-block ml-2">Share</p>
-                                            </a>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -325,14 +313,7 @@ class ProfileLanding extends React.Component {
                                                 </svg>
                                                 <p class="d-none d-md-block ml-2">Comment</p>
                                             </a>
-                                            <a href="javascript:;" class="d-flex align-items-center text-muted">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-share icon-md">
-                                                    <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
-                                                    <polyline points="16 6 12 2 8 6"></polyline>
-                                                    <line x1="12" y1="2" x2="12" y2="15"></line>
-                                                </svg>
-                                                <p class="d-none d-md-block ml-2">Share</p>
-                                            </a>
+            
                                         </div>
                                     </div>
                                 </div>
