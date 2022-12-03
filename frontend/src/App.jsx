@@ -12,9 +12,15 @@ function App() {
   return (
     <BrowserRouter>
       <nav
-        class="navbar sticky-top navbar-expand-lg navbar-default p-2"
+        class="navbar sticky-top navbar-expand-lg  p-2"
         style={{ backgroundColor: "#5c2568" }}
       >
+        <style
+      type="text/css"
+      dangerouslySetInnerHTML={{
+        __html:
+".navbar {height: 50px; max-height: 50px;"}}
+      />
         <a class="navbar-brand pr-1 m-1" href="#">
           <img
             src={logo}
@@ -26,20 +32,17 @@ function App() {
           HU Alumni Portal
         </a>
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active z-2">
+            <li class="nav-item z-2">
               <Link to={"/home"} className="nav-link">
                 Home
               </Link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item z-2">
               <Link to={"/forum"} className="nav-link">
                 Forum
               </Link>
             </li>
-          </ul>
-        
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item p-2 my-2 my-lg-0 active">
+          <li class="nav-item z-2">
             <Link to={"/profile"} className="nav-link">
               My Profile
             </Link>
