@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 
-class ProfileLanding extends React.Component {
+class Home extends React.Component {
   
  
   render() {
@@ -14,50 +14,6 @@ class ProfileLanding extends React.Component {
         <div className="maincontainer">
         <div class="container">
             <div class="profile-page tx-13">
-                <div class="row">
-                    <div class="col-12 grid-margin">
-                        <div class="profile-header">
-                            <div class="cover">
-                                <div class="gray-shade"></div>
-                            
-                                <div class="cover-body d-flex justify-content-between align-items-center">
-                                    <div>
-                                        <img class="profile-pic" src="https://therichpost.com/wp-content/uploads/2021/03/avatar6.png" alt="profile" />
-                                        <span class="profile-name">Jassa Jas</span>
-                                    </div>
-                                    
-                                        
-                                    
-                                </div>
-                            </div>
-                            <div class="header-links">
-                                <ul class="links d-flex align-items-center mt-3 mt-md-0">
-                                    <li class="header-link-item d-flex align-items-center active">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-columns mr-1 icon-md">
-                                            <path d="M12 3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-7m0-18H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7m0-18v18"></path>
-                                        </svg>
-                                        <a class="pt-1px d-none d-md-block" href="#">Timeline</a>
-                                    </li>
-                                    <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user mr-1 icon-md">
-                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                            <circle cx="12" cy="7" r="4"></circle>
-                                        </svg>
-                                        <Link to={"/profile"}  className="pt-1px d-none d-md-block">About</Link>
-                                    </li>
-                                    <li class="header-link-item ml-3 pl-3 border-left d-flex align-items-center">
-                                        
-                                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                            <circle cx="9" cy="7" r="4"></circle>
-                                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                                        
-                                    </li>
-                                    </ul> 
-                </div>
-                </div>
-                </div>                   
-                </div>
                 <div class="row profile-body">
                    
                     <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
@@ -504,4 +460,4 @@ class ProfileLanding extends React.Component {
 };
 }
 
-export default ProfileLanding;
+export default Home;

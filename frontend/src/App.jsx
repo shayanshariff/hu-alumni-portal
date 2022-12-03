@@ -4,7 +4,7 @@ import Login from "./pages/login";
 import Landing from "./pages/landing";
 import ProfilePage from "./pages/profile";
 import Fpasswd from "./pages/fpasswd";
-import ProfileLanding from "./pages/profile-landing";
+import Home from "./pages/home";
 import logo from "./assets/images/habib.png";
 import Forum from "./pages/forum";
 
@@ -27,7 +27,7 @@ function App() {
         </a>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active z-2">
-              <Link to={"/"} className="nav-link">
+              <Link to={"/home"} className="nav-link">
                 Home
               </Link>
             </li>
@@ -40,7 +40,7 @@ function App() {
         
         <ul class="navbar-nav ml-auto">
           <li class="nav-item p-2 my-2 my-lg-0 active">
-            <Link to={"/profile-landing"} className="nav-link">
+            <Link to={"/profile"} className="nav-link">
               My Profile
             </Link>
           </li>
@@ -52,7 +52,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/forgot-pwd" element={<Fpasswd />} />
         <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/profile-landing" element={<ProfileLanding />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/edit-profile" element={<ProfilePageEdit />} />
 
       </Routes>
