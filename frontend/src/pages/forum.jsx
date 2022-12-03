@@ -11,13 +11,37 @@ export default function Forum() {
         Welcome to the HU Forum
       </h1>
       <div className="flex space-x-2 space-between">
-        <div className="flex flex-col space-between space-y-4">
-            <div className="bg-white rounded-xl  p-2 mx-2">
-                <h1>Your Groups</h1>
-                <p className="text-sm mt-3">HU Alumini Forum</p>
-                <p className="text-sm mt-1">Batch of 20220</p>
-            </div>
-        </div>
+      <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
+                    <div class="card rounded">
+                                    <div class="card-body">
+                                        <p class="card-title font-weight-bold justify-content-between mb-2 pb-2 ">My Groups</p>
+                                        <div class="d-flex justify-content-between mb-2 pb-2 ">
+                                            <div class="d-flex align-items-center hover-pointer">
+                                                <div class="ml-2">
+                                                <p>Batch of 2022 </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2 pb-2 ">
+                                            <div class="d-flex align-items-center hover-pointer">
+                                                <div class="ml-2">
+                                                <p>Alumni Forum </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2 pb-2 ">
+                                            <div class="d-flex align-items-center hover-pointer">
+                                                <div class="ml-2">
+                                                <p>Computer Science </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    </div>
+            
+                        
+                    </div>
         <div className="flex space-between flex-col space-y-4 w-1/2 m-auto">
           <div className="flex space-between space-x-2">
             <textarea
