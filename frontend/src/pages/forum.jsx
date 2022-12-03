@@ -12,7 +12,7 @@ export default function Forum() {
       </h1>
       <div className="flex space-x-2 space-between">
         <div className="flex flex-col space-between space-y-4">
-            <div className="bg-white rounded p-2 mx-2">
+            <div className="bg-white rounded-xl  p-2 mx-2">
                 <h1>Your Groups</h1>
                 <p className="text-sm mt-3">HU Alumini Forum</p>
                 <p className="text-sm mt-1">Batch of 20220</p>
@@ -21,13 +21,13 @@ export default function Forum() {
         <div className="flex space-between flex-col space-y-4 w-1/2 m-auto">
           <div className="flex space-between space-x-2">
             <textarea
-              className="w-full p-2 rounded resize-none"
+              className="w-full p-2 rounded-xl resize-none"
               type="text"
               rows={4}
               placeholder="Write a new post ..."
             />
             <div className="block">
-              <button className="p-2 bg-blue-500 rounded text-white bottom-0">
+              <button className="p-2 bg-blue-500 rounded-xl text-white bottom-0">
                 Post
               </button>
             </div>
@@ -36,7 +36,7 @@ export default function Forum() {
           <Post user="Jane Doe" text="Lorem ipsum si amot di lamor" />
           <Post user="Jane Doe" text="Lorem ipsum si amot di lamor" />
         </div>
-        <div className="bg-white rounded p-2 mx-2">
+        <div className="bg-white rounded-xl p-2 mx-2">
             <h1 className="text-center">Friends</h1>
         </div>
       </div>

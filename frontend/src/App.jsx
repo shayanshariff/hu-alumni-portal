@@ -25,7 +25,6 @@ function App() {
           />
           HU Alumni Portal
         </a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active z-2">
               <Link to={"/"} className="nav-link">
@@ -38,7 +37,7 @@ function App() {
               </Link>
             </li>
           </ul>
-        </div>
+        
         <ul class="navbar-nav ml-auto">
           <li class="nav-item p-2 my-2 my-lg-0 active">
             <Link to={"/profile-landing"} className="nav-link">
