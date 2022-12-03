@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
+import ProfilePageEdit from "./pages/edit-profile";
 import Login from "./pages/login";
 import Landing from "./pages/landing";
 import ProfilePage from "./pages/profile";
@@ -53,6 +53,8 @@ function App() {
         <Route path="/forgot-pwd" element={<Fpasswd />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/profile-landing" element={<ProfileLanding />} />
+        <Route path="/edit-profile" element={<ProfilePageEdit />} />
+
       </Routes>
     </BrowserRouter>
   );

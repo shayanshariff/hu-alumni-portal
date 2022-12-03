@@ -1,7 +1,7 @@
 import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-export default function ProfilePage() {
+export default function ProfilePageEdit() {
   return (
     <>
     <meta charSet="utf-8" />
@@ -35,7 +35,7 @@ export default function ProfilePage() {
               <li className="active">
                 <a href="/#">
                   {" "}
-                  <i className="fa fa-user" /> Profile
+                  <i className="fa fa-edit" /> Edit Profile
                 </a>
               </li>
               <li>
@@ -51,7 +51,7 @@ export default function ProfilePage() {
                 <a href = "/#">
                   {" "}
                   
-                  <i className="fa fa-edit" /> Edit profile
+                  <i className="fa fa-user" />Profile
                 </a>
               </li>
             </ul>
