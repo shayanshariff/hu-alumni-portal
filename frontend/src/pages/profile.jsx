@@ -38,10 +38,6 @@ export default function ProfilePage() {
               <li>
                 <a href="/#">
                   {" "}
-                  <i className="fa fa-calendar" /> Recent Activity{" "}
-                  <span className="label label-warning pull-right r-activity">
-                    9
-                  </span>
                 </a>
               </li>
               <li>

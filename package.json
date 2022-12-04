@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "react-circular-progressbar": "^2.1.0"
+    "react-circular-progressbar": "^2.1.0",
+    "react-comments-section": "^2.0.10"
   }
 }
