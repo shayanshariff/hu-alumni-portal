@@ -1,6 +1,7 @@
 import Post from "../components/post";
 import "../assets/css/main.css";
 
+
 export default function Forum() {
   return (
     <div
@@ -98,7 +99,6 @@ export default function Forum() {
               </button>
             </div>
           </div>
-          <Post user="Jane Doe" text="Lorem ipsum si amot di lamor" />
           <Post user="Jane Doe" text="Lorem ipsum si amot di lamor" />
           <Post user="Jane Doe" text="Lorem ipsum si amot di lamor" />
         </div>
