@@ -9,7 +9,7 @@ export default function Forum() {
       style={{ background: "#e5e7eb" }}
     >
       <h1 className="font-bold text-center text-2xl py-4 text-purple">
-        Welcome to the HU Forum
+        Welcome to the HU Alumni Forum
       </h1>
       <div class="row profile-body">
                    
