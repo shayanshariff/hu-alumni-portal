@@ -144,7 +144,7 @@ export default function ProfilePage() {
                       </div>
                     </div>
                     <div className="bio-desk">
-                      <h4 className="red">Employment History</h4>
+                      <h4 className="purple">Employment History</h4>
                       <p>Company : Google</p>
                       <p>Designation : Junior Software Analyst</p>
                       <p>Start Date : July 2020</p>
@@ -193,7 +193,7 @@ export default function ProfilePage() {
                       </div>
                     </div>
                     <div className="bio-desk">
-                      <h4 className="terques">Current Employment </h4>
+                      <h4 className="purple">Current Employment </h4>
                       <p>Company : Apple Inc.</p>
                       <p>Designation : Junior Software Developer</p>
                       <p>Start Date: July 2023</p>
@@ -241,7 +241,7 @@ export default function ProfilePage() {
                       </div>
                     </div>
                     <div className="bio-desk">
-                      <h4 className="green">Master's</h4>
+                      <h4 className="purple">Master's</h4>
                       <p>Institue : University of Computer Studies</p>
                       <p>Major : Data Science</p>
                       <p>Started : January 2022</p>
