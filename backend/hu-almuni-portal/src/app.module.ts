@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { UserModule } from './users/user.module';
+import { PostsService } from './posts/posts.service';
 
 @Module({
   imports: [MongooseModule.forRoot('mongodb+srv://faiz-haseeb1:yousuck561@cluster0.dzkfo.mongodb.net/alumni-portal', {
@@ -15,6 +16,6 @@ import { UserModule } from './users/user.module';
   providers : [{
     provide : APP_GUARD,
     useClass : JwtAuthGuard
-  }]
+  }, PostsService]
 })
 export class AppModule {}

@@ -1,6 +1,4 @@
 import React from 'react';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
 export default function ProfilePage() {
   return (
     <>
@@ -247,11 +245,6 @@ export default function ProfilePage() {
                       <p>Started : January 2022</p>
                       <p>Finished : January 2025</p>
                       <div style={{ width: 100, height: 100 }}>
-                      <CircularProgressbar value={50} text={"50%"} 
-                      styles={buildStyles({
-                        textColor: '#854593',
-                        pathColor: '#854593',
-                      })} />
                       </div>
                     </div>
                   </div>
@@ -305,11 +298,6 @@ export default function ProfilePage() {
                       <p>Started : August 2017</p>
                       <p>Deadline : June 2021</p>
                       <div style={{ width: 100, height: 100 }}>
-                      <CircularProgressbar value={100} text={"100%"} 
-                      styles={buildStyles({
-                        textColor: '#854593',
-                        pathColor: '#854593',
-                      })}/>
                     </div>
                     </div>
                   </div>

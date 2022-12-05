@@ -1,64 +1,29 @@
 import React from "react";
-import {Route, Link, Routes, useParams} from 'react-router-dom';
-
+import { Route, Link, Routes, useParams } from "react-router-dom";
+import "../assets/css/main.css";
 
 function Login() {
+
+  function handleSubmit() {
+    console.log("hi")
+  }
+
   return (
-    <> 
-    <div>  
-   <div className="container" id="container">
-  <div className="form-container sign-up-container">
-    <form action="#">
-      <input type="text" placeholder="Name" />
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <button>Sign Up</button>
-    </form>
-  </div>
-  <div className="form-container sign-in-container">
-    <form action="#">
-      <h1 className ="mb-3">Sign In</h1>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="New Password" />
-      <button>Sign In</button>
-    </form>
-  </div>
-  <div className="overlay-container">
-    <div className="overlay">
-      <div className="overlay-panel overlay-left">
-        <h1>Welcome Back!</h1>
-        <p>To keep connected with us please login with your personal info</p>
-        <button className="ghost" id="signIn">
-          Sign In
-        </button>
+    <div className="flex flex-col" id="container">
+      <div style={{backgroundColor : "rgb(92, 37, 104)"}} className="text-white w-full text-center py-2">
+        <h1 className="text-2xl">Hello!</h1>
+        <p className="mt-2">Please provide your email along with your password to login. </p>
       </div>
-      <div className="overlay-panel overlay-right">
-        <h1 >Hello!</h1>
-        
-        <p>Please provide your email along with your password to login. </p>
-        
-        <button className="mt-12 ghost" id="signIn">
-          Back
-        </button>
+      <div className="h-screen m-auto text-center mt-5">
+          <h1 className="mb-3 text-2xl">Sign In</h1>
+          <div className="flex flex-col">
+            <input className="p-2 rounded m-2 bg-gray-200" type="email" placeholder="Email" />
+            <input className="p-2 rounded m-2 bg-gray-200" type="password" placeholder="Password" />
+          </div>
+          <button onClick={handleSubmit} style={{backgroundColor : "rgb(92, 37, 104)"}} className="p-2 text-white rounded m-2">Sign In</button>
       </div>
     </div>
-  </div>
-</div>
-</div>
-<style
-      type="text/css"
-      dangerouslySetInnerHTML={{
-        __html: 
-         "* { box-sizing: border-box; } #button { line-height: 12px; width: 18px; font-size: 8pt; font-family: tahoma; margin-top: 1px; margin-right: 2px; position:absolute; top:-10px; right:-20px; } body { background: #f6f5f7; display: flex; justify-content: center; align-items: center; flex-direction: column; font-family: 'Montserrat', sans-serif; height: 100vh; margin: -20px 0 50px; } h0 { font-weight: bold; margin: 0; font-size: 15px; color:#854593; top:-14p; left:-20p; position:relative; } h1 { font-weight: bold; margin: 0; font-size: 25px; } h2 { text-align: center; } p { font-size: 12px; font-weight: 100; line-height: 20px; letter-spacing: 0.5px; margin: 20px 0 30px; } span { font-size: 10px; } a { color: #333; font-size: 10px; text-decoration: none; margin: 15px 0; } button { border-radius: 20px; border: 1px solid #854593; background-color: #854593; color: #FFFFFF; font-size: 12px; font-weight: bold; padding: 12px 45px; letter-spacing: 1px; text-transform: uppercase; transition: transform 80ms ease-in; } button:active { transform: scale(0.95); } button:focus { outline: none; } button.ghost { background-color: transparent; border-color: #FFFFFF; } form { background-color: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 0 50px; height: 100%; text-align: center; } input { background-color: #eee; border: none; padding: 12px 15px; margin: 8px 0; width: 100%; } .container { background-color: #fff; border-radius: 10px; box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22); position: relative; overflow: hidden; width: 768px; max-width: 100%; min-height: 480px; } .form-container { position: absolute; top: 0; height: 100%; transition: all 0.6s ease-in-out; } .sign-in-container { left: 0; width: 50%; z-index: 2; } .container.right-panel-active .sign-in-container { transform: translateX(100%); } .sign-up-container { left: 0; width: 50%; opacity: 0; z-index: 1; } .container.right-panel-active .sign-up-container { transform: translateX(100%); opacity: 1; z-index: 5; animation: show 0.6s; } @keyframes show { 0%, 49.99% { opacity: 0; z-index: 1; } 50%, 100% { opacity: 1; z-index: 5; } } .overlay-container { position: absolute; top: 0; left: 50%; width: 50%; height: 100%; overflow: hidden; transition: transform 0.6s ease-in-out; z-index: 100; } .container.right-panel-active .overlay-container{ transform: translateX(-100%); } .overlay { background: #854593; background: -webkit-linear-gradient(to right, #854593, #854593); background: linear-gradient(to right, #854593, #854593); background-repeat: no-repeat; background-size: cover; background-position: 0 0; color: #FFFFFF; position: relative; left: -100%; height: 100%; width: 200%; transform: translateX(0); transition: transform 0.6s ease-in-out; } .container.right-panel-active .overlay { transform: translateX(50%); } .overlay-panel { position: absolute; display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 0 40px; text-align: center; top: 0; height: 100%; width: 50%; transform: translateX(0); transition: transform 0.6s ease-in-out; } .overlay-left { transform: translateX(-20%); } .container.right-panel-active .overlay-left { transform: translateX(0); } .overlay-right { right: 0; transform: translateX(0); } .container.right-panel-active .overlay-right { transform: translateX(20%); } .social-container { margin: 20px 0; } .social-container a { border: 1px solid #DDDDDD; border-radius: 50%; display: inline-flex; justify-content: center; align-items: center; margin: 0 5px; height: 40px; width: 40px; } footer { background-color: #222; color: #fff; font-size: 14px; bottom: 0; position: fixed; left: 0; right: 0; text-align: center; z-index: 999; } footer p { margin: 10px 0; } footer i { color: red; } footer a { color: #3c97bf; text-decoration: none; }"
-      }}
-    />
-    
-    </>
-
   );
 }
 
 export default Login;
-
-
-
