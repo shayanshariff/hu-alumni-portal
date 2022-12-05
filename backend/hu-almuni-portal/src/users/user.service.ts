@@ -20,7 +20,7 @@ export class UserService{
         
     }
 
-    async findOne(email : string){
+    async findOne(email : string) : Promise<User>{
         return await this.userModel.findOne({email : email})
     }
 }
