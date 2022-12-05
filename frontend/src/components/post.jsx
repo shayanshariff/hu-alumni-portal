@@ -1,14 +1,9 @@
 export default function Post(props) {
   return (
-    // <div classNameName="flex rounded bg-white">
-    //   <div classNameName="p-2">
-    //     <h3 classNameName="py-4 text-xl">{props.user}</h3>
-    //     <p classNameName="py-4 text-sm">{props.text}</p>
-    //   </div>
-    // </div>
+
                                 <div className="col-md-12">
-                                <div className="card rounded">
-                                    <div className="card-header">
+                                <div className="card rounded-xl">
+                                    <div className="card-header ">
                                         <div className="d-flex align-items-center justify-content-between">
                                             <div className="d-flex align-items-center">
                                                 <img className="img-xs rounded-circle" src="https://therichpost.com/wp-content/uploads/2021/03/avatar6.png" alt="" />

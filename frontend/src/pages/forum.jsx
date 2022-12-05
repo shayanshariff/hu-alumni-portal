@@ -2,8 +2,10 @@ import Post from "../components/post";
 import "../assets/css/main.css";
 
 
+
 export default function Forum() {
   return (
+    
     <div
       className="col w-full h-screen font-sans"
       style={{ background: "#e5e7eb" }}
@@ -13,16 +15,15 @@ export default function Forum() {
       </h1>
       <div class="row profile-body">
                    
-                    <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper">
-                    <div class="card rounded">
+                    <div class="d-none d-md-block col-md-4 col-xl-3 left-wrapper pl-6">
+                    <div class="card rounded-xl">
                                     <div class="card-body">
-                                        <h6 class="card-title">Friends Online</h6>
+                                        <h6 class="card-title">Messages</h6>
                                         <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                                             <div class="d-flex align-items-center hover-pointer">
                                                 <img class="img-xs rounded-circle" src="https://therichpost.com/wp-content/uploads/2021/03/avatar2.png" alt="" />
                                                 <div class="ml-2">
-                                                <p>Jessa </p>
-                                                    <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                                <p>John Doe </p>
                                                 </div>
                                             </div>
                                             
@@ -31,8 +32,7 @@ export default function Forum() {
                                             <div class="d-flex align-items-center hover-pointer">
                                                 <img class="img-xs rounded-circle" src="https://therichpost.com/wp-content/uploads/2021/03/avatar3.png" alt="" />
                                                 <div class="ml-2">
-                                                    <p>jassa</p>
-                                                    <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                                    <p>Jassa</p>
                                                 </div>
                                             </div>
                                             
@@ -41,8 +41,7 @@ export default function Forum() {
                                             <div class="d-flex align-items-center hover-pointer">
                                                 <img class="img-xs rounded-circle" src="https://therichpost.com/wp-content/uploads/2021/03/avatar4.png" alt="" />
                                                 <div class="ml-2">
-                                                    <p>jassa</p>
-                                                    <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                                    <p>Alex</p>
                                                 </div>
                                             </div>
                                             
@@ -51,8 +50,8 @@ export default function Forum() {
                                             <div class="d-flex align-items-center hover-pointer">
                                                 <img class="img-xs rounded-circle" src="https://therichpost.com/wp-content/uploads/2021/03/avatar5.png" alt="" />
                                                 <div class="ml-2">
-                                                    <p>jassa</p>
-                                                    <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                                    <p>Jassa</p>
+
                                                 </div>
                                             </div>
                                             
@@ -61,8 +60,7 @@ export default function Forum() {
                                             <div class="d-flex align-items-center hover-pointer">
                                                 <img class="img-xs rounded-circle" src="https://therichpost.com/wp-content/uploads/2021/03/avatar6.png" alt="" />
                                                 <div class="ml-2">
-                                                    <p>jassa</p>
-                                                    <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                                    <p>Ali</p>
                                                 </div>
                                             </div>
                                             
@@ -71,8 +69,7 @@ export default function Forum() {
                                             <div class="d-flex align-items-center hover-pointer">
                                                 <img class="img-xs rounded-circle" src="https://therichpost.com/wp-content/uploads/2021/03/avatar7.png" alt="" />
                                                 <div class="ml-2">
-                                                    <p>jassa</p>
-                                                    <p class="tx-11 text-muted">12 Mutual Friends</p>
+                                                    <p>Richard</p>
                                                 </div>
                                             </div>
                                         
@@ -94,7 +91,7 @@ export default function Forum() {
               placeholder="Write a new post..."
             />
             <div className="block">
-              <button className="p-3 bg-btn  rounded-xl text-white bottom-4">
+              <button className="pl-6 pr-6 pt-12 pb-12 bg-btn  rounded-xl text-white bottom-4">
                 Post
               </button>
             </div>
@@ -102,13 +99,13 @@ export default function Forum() {
           <Post user="Jane Doe" text="Lorem ipsum si amot di lamor" />
           <Post user="Jane Doe" text="Lorem ipsum si amot di lamor" />
         </div>
-        <div class="d-none d-xl-block col-xl-3 right-wrapper">
+        <div class="d-none d-xl-block col-xl-3 right-wrapper pr-6">
                         <div class="row">
                            
                             <div class="col-md-12 grid-margin">
-                                <div class="card rounded">
+                                <div class="card rounded-xl">
                                     <div class="card-body">
-                                        <h6 class="card-title">suggestions for you</h6>
+                                        <h6 class="card-title">Suggestions for you</h6>
                                         <div class="d-flex justify-content-between mb-2 pb-2 border-bottom">
                                             <div class="d-flex align-items-center hover-pointer">
                                                 <img class="img-xs rounded-circle" src="https://therichpost.com/wp-content/uploads/2021/03/avatar2.png" alt="" />
