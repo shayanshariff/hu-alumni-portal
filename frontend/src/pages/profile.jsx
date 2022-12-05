@@ -39,7 +39,7 @@ export default function ProfilePage() {
                 </a>
               </li>
               <li>
-                <a href = "/#">
+                <a href = "/edit-profile">
                   {" "}
                   
                   <i className="fa fa-edit" /> Edit profile
