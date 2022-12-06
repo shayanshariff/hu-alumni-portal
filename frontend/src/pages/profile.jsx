@@ -1,12 +1,14 @@
 import React from 'react';
 import { useState } from "react";
 import { Link } from "react-router-dom"
+import { useNavigate } from 'react-router-dom';
 import Bio from "../components/bio";
 export default function ProfilePage() {
 
   const [bio, setBio] = useState([
     {FName: "Ali", LName : "Adnan", country: "Pakistan", Birthday: "1st Jan 2000", Occupation: "Student", Email: "ali.adnan@example.com", mobile: "555-12345", phone: "9212345678"}
 ])
+
   return (
     <>
     <meta charSet="utf-8" />

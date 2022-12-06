@@ -1,7 +1,11 @@
 import React from 'react';
 import { useState } from "react";
-export default function ProfilePageEdit() {
+import { useNavigate } from 'react-router-dom';
+export default function ProfilePageEdit(props) {
+  const navigate = useNavigate();
 
+
+  const [FName, setFName] = useState("")
   const [bio, setBio] = useState([
     {FName: "Ali", LName : "Adnan", country: "Pakistan", Birthday: "1st Jan 2000", Occupation: "Student", Email: "ali.adnan@example.com", mobile: "555-12345", phone: "9212345678"}
 ])
@@ -64,51 +68,59 @@ const [postBox, setPostBox] = useState("")
             <div className="bio-graph-heading">
              Hello.
             </div>
+            <form id="editForm">
             <div className="panel-body bio-graph-info">
               <h1>Bio</h1>
               <div className="row">
                 <div className="bio-row">
                   <p>
-                    <span>First Name </span>: Camila
+                    <span>First Name </span>: <input type="text" className='border' id='FName' placeholder="Ali" value={FName}
+                onChange={e => setFName(e.target.value)}/>
                   </p>
                 </div>
                 <div className="bio-row">
                   <p>
-                    <span>Last Name </span>: Smith
+                    <span>Last Name </span>: <input type="text" className='border' id='LName' placeholder="Adnan"/>
                   </p>
                 </div>
                 <div className="bio-row">
                   <p>
-                    <span>Country </span>: Australia
+                    <span>Country </span>: <input type="text" className='border' id='Country' placeholder="Pakistan"/>
                   </p>
                 </div>
                 <div className="bio-row">
                   <p>
-                    <span>Birthday</span>: 13 July 1983
+                    <span>Birthday</span>: <input type="text" className='border' id='Birthday' placeholder="1st Jan 2000"/>
                   </p>
                 </div>
                 <div className="bio-row">
                   <p>
-                    <span>Occupation </span>: UI Designer
+                    <span>Occupation </span>: <input type="text" className='border' id='Occupation' placeholder="Student"/>
                   </p>
                 </div>
                 <div className="bio-row">
                   <p>
-                    <span>Email </span>: jsmith@flatlab.com
+                    <span>Email </span>: <input type="text" className='border' id='Email' placeholder="ali.adnan@example.com"/>
                   </p>
                 </div>
                 <div className="bio-row">
                   <p>
-                    <span>Mobile </span>: (12) 03 4567890
+                    <span>Mobile </span>: <input type="text" className='border' id='Mobile' placeholder="555-12345"/>
                   </p>
                 </div>
                 <div className="bio-row">
                   <p>
-                    <span>Phone </span>: 88 (02) 123456
+                    <span>Phone </span>: <input type="text" className='border' id='Mobile' placeholder="9212345678"/>
                   </p>
+                </div>
+                <div className='justify-content-end'>
+                <input type="submit" style={{backgroundColor : "rgb(92, 37, 104)"}} className="p-2 text-white rounded m-2"/>
+ 
+
                 </div>
               </div>
             </div>
+            </form>
           </div>
           <div>
             <div className="row">
