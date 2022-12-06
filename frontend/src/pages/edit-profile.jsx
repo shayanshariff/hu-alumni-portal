@@ -1,5 +1,13 @@
 import React from 'react';
+import { useState } from "react";
 export default function ProfilePageEdit() {
+
+  const [bio, setBio] = useState([
+    {FName: "Ali", LName : "Adnan", country: "Pakistan", Birthday: "1st Jan 2000", Occupation: "Student", Email: "ali.adnan@example.com", mobile: "555-12345", phone: "9212345678"}
+])
+
+const [postBox, setPostBox] = useState("")
+
   return (
     <>
     <meta charSet="utf-8" />
@@ -29,7 +37,7 @@ export default function ProfilePageEdit() {
             </div>
             <ul className="nav nav-pills nav-stacked">
               <li className="active">
-                <a href="/#">
+                <a href="/edit-profile">
                   {" "}
                   <i className="fa fa-edit" /> Edit Profile
                 </a>
@@ -41,7 +49,7 @@ export default function ProfilePageEdit() {
                 </a>
               </li>
               <li>
-                <a href = "/#">
+                <a href = "/profile">
                   {" "}
                   
                   <i className="fa fa-user" />Profile
@@ -57,7 +65,7 @@ export default function ProfilePageEdit() {
              Hello.
             </div>
             <div className="panel-body bio-graph-info">
-              <h1>Bio Graph</h1>
+              <h1>Bio</h1>
               <div className="row">
                 <div className="bio-row">
                   <p>

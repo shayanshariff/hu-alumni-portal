@@ -5,11 +5,18 @@ import "../assets/css/main.css";
 export default function Forum() {
 
     const [posts, setPosts] = useState([
-        {user : "Jane Doe", content : "Lorem ipsum si amot di lamor"},
-        {user : "John Doe", content : "Lorem ipsum si amot di lamor"}
+        {id: 0, user : "Jane Doe", content : "Lorem ipsum si amot di lamor", comments: [{user : "Alex", content : "Congrats!"}, {user : "Hassan", content : "All the best for the future!"}]},
+        {id: 1, user : "John Doe", content : "Lorem ipsum si amot di lamor", comments: [{user : "Ali", content : "CFBR"}]}
     ])
 
     const [postBox, setPostBox] = useState("")
+    const [postComments, setPostComments] = useState([])
+    const [commentsBox, setCommentsBox] = useState("")
+
+    
+
+    
+
   return (
     <div
       className="col w-full h-screen font-sans"
@@ -111,7 +118,7 @@ export default function Forum() {
             />
             <div className="block">
               <button onClick={()=>{
-                setPosts([...posts, {user : "Jane Doe", content : postBox}])
+                setPosts([...posts, {user : "Ali", content : postBox}])
                 setPostBox("")
             }} className="pl-6 pr-6 pt-12 pb-12 bg-btn  rounded-xl text-white bottom-4">
                 Post
@@ -119,9 +126,9 @@ export default function Forum() {
             </div>
           </div>
           {posts.map((post) => { 
-            return  <Post user={post.user} text={post.content}/>}
+            return  <Post id={post.id} user={post.user} text={post.content} comments={post.comments}/>}
           )}
-         
+
         </div>
         <div class="d-none d-xl-block col-xl-3 right-wrapper pr-6">
           <div class="row">

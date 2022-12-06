@@ -12,6 +12,7 @@
     "react-burger-menu": "^3.0.8",
     "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.2.0",
+    "react-edit-text": "^5.0.2",
     "react-popper": "^2.3.0",
     "react-router": "^6.4.4",
     "react-router-dom": "^6.4.3",

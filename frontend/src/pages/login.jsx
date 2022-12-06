@@ -20,7 +20,7 @@ function Login() {
             <input className="p-2 rounded m-2 bg-gray-200" type="email" placeholder="Email" />
             <input className="p-2 rounded m-2 bg-gray-200" type="password" placeholder="Password" />
           </div>
-          <button onClick={handleSubmit} style={{backgroundColor : "rgb(92, 37, 104)"}} className="p-2 text-white rounded m-2">Sign In</button>
+          <button onClick={handleSubmit} style={{backgroundColor : "rgb(92, 37, 104)"}} className="p-2 text-white rounded m-2"><Link to={"/home"}  >Get Started</Link></button>
       </div>
     </div>
   );

@@ -1,5 +1,12 @@
 import React from 'react';
+import { useState } from "react";
+import { Link } from "react-router-dom"
+import Bio from "../components/bio";
 export default function ProfilePage() {
+
+  const [bio, setBio] = useState([
+    {FName: "Ali", LName : "Adnan", country: "Pakistan", Birthday: "1st Jan 2000", Occupation: "Student", Email: "ali.adnan@example.com", mobile: "555-12345", phone: "9212345678"}
+])
   return (
     <>
     <meta charSet="utf-8" />
@@ -23,7 +30,7 @@ export default function ProfilePage() {
                   alt=""
                 />
               </a>
-              <h1>Camila Smith</h1>
+              <h1>Ali Adnan</h1>
               <p>deydey@theEmail.com</p>
             </div>
             <ul className="nav nav-pills nav-stacked">
@@ -54,52 +61,12 @@ export default function ProfilePage() {
             <div className="bio-graph-heading">
              Hello.
             </div>
-            <div className="panel-body bio-graph-info">
-              <h1>Bio Graph</h1>
-              <div className="row">
-                <div className="bio-row">
-                  <p>
-                    <span>First Name </span>: Camila
-                  </p>
-                </div>
-                <div className="bio-row">
-                  <p>
-                    <span>Last Name </span>: Smith
-                  </p>
-                </div>
-                <div className="bio-row">
-                  <p>
-                    <span>Country </span>: Australia
-                  </p>
-                </div>
-                <div className="bio-row">
-                  <p>
-                    <span>Birthday</span>: 13 July 1983
-                  </p>
-                </div>
-                <div className="bio-row">
-                  <p>
-                    <span>Occupation </span>: UI Designer
-                  </p>
-                </div>
-                <div className="bio-row">
-                  <p>
-                    <span>Email </span>: jsmith@flatlab.com
-                  </p>
-                </div>
-                <div className="bio-row">
-                  <p>
-                    <span>Mobile </span>: (12) 03 4567890
-                  </p>
-                </div>
-                <div className="bio-row">
-                  <p>
-                    <span>Phone </span>: 88 (02) 123456
-                  </p>
-                </div>
-              </div>
-            </div>
+            {bio.map((bioDetails) => { 
+            return  <Bio FName={bioDetails.FName} LName={bioDetails.LName} country={bioDetails.country} Birthday={bioDetails.Birthday} Occupation={bioDetails.Occupation}
+            Email={bioDetails.Email} mobile={bioDetails.mobile} phone={bioDetails.phone} />}
+          )}
           </div>
+          
           <div>
             <div className="row">
               <div className="col-md-6">

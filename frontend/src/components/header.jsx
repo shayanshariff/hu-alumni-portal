@@ -14,7 +14,9 @@ export default function Header() {
             class="d-inline-block align-top p-1  "
             alt=""
           />
+          <Link to={"/"} className="nav-link">
           HU Alumni Portal
+          </Link>
         </a>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item z-2">
