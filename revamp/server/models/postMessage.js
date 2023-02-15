@@ -7,8 +7,8 @@ const postSchema = mongoose.Schema({
     forum: String,
     image: String,
     likes: {
-        type: Number,
-        default: 0
+        type: [String],
+        default: [],
     },
     createdOn: {
         type: Date,
@@ -17,6 +17,6 @@ const postSchema = mongoose.Schema({
 
 });
 
-const PostMessage = mongoose.model('PostMessage', postSchema);
+var PostMessage = mongoose.model('PostMessage', postSchema);
 
 export default PostMessage; 

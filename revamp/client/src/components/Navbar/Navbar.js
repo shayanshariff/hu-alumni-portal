@@ -1,12 +1,30 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {AppBar, Avatar, Button, Toolbar, Typography} from "@material-ui/core";
 import logo from "../../images/habib.png";
 import useStyles from "./styles";
-import {Link} from "react-router-dom";
+import {Link, useHistory, useLocation} from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 
 const Navbar = () => {
     const classes = useStyles();
-    const user = null;
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const location = useLocation();
+
+    const logout = () => {
+        dispatch({type: "LOGOUT"});
+
+        history.push("/");
+        setUser(null);
+    }
+    useEffect(() => {
+        const token = user?.token;
+
+        setUser(JSON.parse(localStorage.getItem('profile')));
+    }, [location]);
+
     return (
             <AppBar className={classes.appBar} position="static" color="inherit">
                 <div className={classes.brandContainer}>

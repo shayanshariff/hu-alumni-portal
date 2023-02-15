@@ -1,9 +1,12 @@
 import PostMessage from "../models/postMessage.js";
 import mongoose from "mongoose";
+import express from "express";
 
+
+const router = express.Router();
 export const getPosts = async (req, res) => {
     try{
-        const postMessages = await PostMessage.find();
+        const postMessages = (await PostMessage.find());
 
         res.status(200).json(postMessages);
     }
@@ -51,10 +54,22 @@ export const deletePost = async (req, res) => {
 export const likePost = async (req, res) => {
     const {id} = req.params;
 
+    if(!req.userId) return res.json({message: 'Unauthenticated'});
+
     if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("No post exists with this id");
 
+    
     const post = await PostMessage.findById(id);
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, {likes: post.likes + 1}, {new: true});
+    const index = post.likes.findIndex((id) => id === String(req.userId));
+    if(index === -1){
+        post.likes.push(req.userId);
+    }
+    else{
+        post.likes = post.likes.filter((id) => id !== String(req.userId));
+    }
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new: true});
 
     res.json(updatedPost);
 }
+
+export default router;

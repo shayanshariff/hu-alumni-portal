@@ -13,19 +13,18 @@ const Post = ({post, setCurrentId}) => {
     const dispatch = useDispatch();
     return (
         <Card className={classes.card}>
-            <CardMedia component="img" image={post.image} title={post.title}/>
-            <div className={classes.overlay}>
+            <CardActions className={classes.cardActions}>
+            <div className={classes.card}>
                 <Typography variant="h6">{post.user}</Typography>
                 <Typography variant="body2">{moment(post.createdOn).fromNow()}</Typography>
             </div>
-            <div className={classes.overlay2}>
-                <Button style={{color: "white"}} size="small" onClick={() => setCurrentId(post._id)}>
+            <div >
+                <Button style={{color: "black"}} size="small" onClick={() => setCurrentId(post._id)}>
                     <MoreHorizIcon fontSize="medium"/>
                 </Button>
             </div>
-            <div className={classes.details}>
-            <Typography variant="body2" color="textSecondary">{post.forum}</Typography>
-            </div>
+            </CardActions>
+            {post.image !== "" && <CardMedia component="img" image={post.image} title={post.title}/>}
             <Typography className={classes.title} variant="h5" gutterBottom>{post.title}</Typography>
             <CardContent>
                 <Typography variant="body2" gutterBottom>{post.body}</Typography>

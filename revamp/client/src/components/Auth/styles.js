@@ -25,7 +25,7 @@ export default makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    //margin: theme.spacing(3, 0, 2),
     backgroundColor: "#5c2568",
     color: "white",
     margin: theme.spacing(1),
