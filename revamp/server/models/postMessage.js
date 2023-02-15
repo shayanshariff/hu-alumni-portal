@@ -8,11 +8,11 @@ const postSchema = mongoose.Schema({
     image: String,
     likes: {
         type: Number,
-        defualt: 0
+        default: 0
     },
     createdOn: {
         type: Date,
-        defualt: new Date()
+        default: new Date()
     },
 
 });

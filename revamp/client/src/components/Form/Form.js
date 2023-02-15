@@ -40,11 +40,11 @@ const Form = ({currentId, setCurrentId}) => {
             <Typography variant="h6">{currentId? "Edit" : "Create"} a Post</Typography>
             <TextField name="user" variant="outlined" label="User" fullWidth value={postData.user} onChange={(e) => setPostData({...postData, user: e.target.value})}/>
             <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({...postData, title: e.target.value})}/>
-            <TextField name="body" variant="outlined" label="Body" fullWidth value={postData.body} onChange={(e) => setPostData({...postData, body: e.target.value})}/>
+            <TextField name="body" multiline maxRows={8} variant="outlined" label="Body" fullWidth value={postData.body} onChange={(e) => setPostData({...postData, body: e.target.value})}/>
             <TextField name="forum" variant="outlined" label="Forum" fullWidth value={postData.forum} onChange={(e) => setPostData({...postData, forum: e.target.value})}/>
             <div className={classes.fileInput}> <FileBase type="file" multiple={false} onDone={({base64}) => setPostData({...postData, image: base64})}/></div>
             <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Post</Button>
-            <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
+            <Button variant="contained"  size="small" onClick={clear} fullWidth>Clear</Button>
             </form>
         </Paper>
     );
