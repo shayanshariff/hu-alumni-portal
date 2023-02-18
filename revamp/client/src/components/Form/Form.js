@@ -7,9 +7,11 @@ import useStyles from "./styles";
 import {useSelector} from "react-redux";
 
 const Form = ({currentId, setCurrentId}) => {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [postData, setPostData] = useState({
-        user: "", title: "", body: "", image: "", forum: "Student"
+        user: user.result.name, title: "", body: "", image: "", forum: "Student"
     });
+   
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId): null);
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -32,13 +34,13 @@ const Form = ({currentId, setCurrentId}) => {
 
     const clear = () => {
         setCurrentId(null);
-        setPostData({user: "", title: "", body: "", image: "", forum: ""})
+        setPostData({ title: "", body: "", image: ""})
     }
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
             <Typography variant="h6">{currentId? "Edit" : "Create"} a Post</Typography>
-            <TextField name="user" variant="outlined" label="User" fullWidth value={postData.user} onChange={(e) => setPostData({...postData, user: e.target.value})}/>
+            
             <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({...postData, title: e.target.value})}/>
             <TextField name="body" multiline maxRows={8} variant="outlined" label="Body" fullWidth value={postData.body} onChange={(e) => setPostData({...postData, body: e.target.value})}/>
 

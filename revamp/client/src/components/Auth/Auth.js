@@ -21,7 +21,6 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        localStorage.setItem('profile', JSON.stringify({...formData}));
         if(isSignup){
             dispatch(signup(formData, history));
         }
