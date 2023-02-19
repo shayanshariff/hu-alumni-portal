@@ -12,6 +12,19 @@ export const getPosts = () => async (dispatch) => {
     
 }
 
+
+export const getAlumniPosts = () => async (dispatch) => {
+    try {
+        const {data} = await api.fetchAlumniPosts();
+        dispatch({type: FETCH_ALL, payload: data});
+        
+    }
+    catch(error){
+        console.log(error);
+    }
+    
+}
+
 export const createPost = (post) => async (dispatch) => {
     try{
         const {data} = await api.createPost(post);

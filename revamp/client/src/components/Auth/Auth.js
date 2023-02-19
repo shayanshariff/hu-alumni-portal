@@ -27,6 +27,8 @@ const Auth = () => {
         else{
             dispatch(signin(formData, history));
         }
+        
+
     };
 
     const handleChange = (e) => {

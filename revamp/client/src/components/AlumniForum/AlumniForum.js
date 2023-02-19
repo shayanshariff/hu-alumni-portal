@@ -1,19 +1,21 @@
 import React, { useState, useEffect }  from "react";
 import {Container, Grow, Grid, Card, Typography} from "@material-ui/core";
 import {useDispatch} from "react-redux";
-import {getPosts} from "../../actions/posts";
+import {getAlumniPosts} from "../../actions/posts";
 import Posts from "../Posts/Posts";
 import useStyles from "../../styles";
-import Form from "../Form/Form";
+import AlumniForm from "../AlumniForm/AlumniForm";
 
 
-const Home = () => {
+const AlumniForum = () => {
     const [currentId, setCurrentId] = useState(null);
     const classes = useStyles();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getPosts());
+        
+        dispatch(getAlumniPosts());
+        console.log("Alumni");
     }, [currentId, dispatch]);
 
     return(
@@ -29,7 +31,7 @@ const Home = () => {
                             <Posts setCurrentId={setCurrentId} />
                         </Grid>
                         <Grid item xs={12} sm={3}>
-                            <Form currentId={currentId} setCurrentId={setCurrentId}/>
+                            <AlumniForm currentId={currentId} setCurrentId={setCurrentId}/>
                         </Grid>
                     </Grid>
                 </Container>
@@ -37,4 +39,4 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default AlumniForum;

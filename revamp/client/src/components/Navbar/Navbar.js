@@ -17,9 +17,9 @@ const Navbar = () => {
 
     const logout = () => {
         dispatch({type: actionType.LOGOUT});
-
-        history.push("/auth");
+        history.push("/");
         setUser(null);
+        
     };
     
     useEffect(() => {
@@ -31,6 +31,7 @@ const Navbar = () => {
           }
 
         setUser(JSON.parse(localStorage.getItem('profile')));
+
          // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
 
@@ -38,10 +39,13 @@ const Navbar = () => {
             <AppBar className={classes.appBar} position="static" color="inherit">
                 <div className={classes.brandContainer}>
                     <img className={classes.image} src={logo} alt="habib-logo" height="60" />
-                        <Typography component={Link} to="/" className={classes.heading} variant="h4" align="center">
-                        &nbsp; &nbsp; Forum
+                        <Typography component={Link} to="/posts" className={classes.heading} variant="h5" align="center">
+                        &nbsp; &nbsp; Student Forum
                         </Typography>
-                        <Typography component={Link} to="/Profile" className={classes.heading} variant="h4" align="center">
+                        <Typography component={Link} to="/posts/alumni" className={classes.heading} variant="h5" align="center">
+                        &nbsp; &nbsp; Alumni Forum
+                        </Typography>
+                        <Typography component={Link} to="/Profile" className={classes.heading} variant="h5" align="center">
                         &nbsp; &nbsp;Profile
                         </Typography>
                 </div>
@@ -55,7 +59,7 @@ const Navbar = () => {
                         
                     ) :
                     (
-                        <Button component={Link} to="/auth" variant="contained" color="gray">Sign in</Button>
+                        <Button component={Link} to="/" variant="contained" color="gray">Sign in</Button>
                     )}
                 </Toolbar>
             </AppBar>
