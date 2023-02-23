@@ -6,8 +6,7 @@ import Auth from "./components/Auth/Auth";
 import Profile from "./components/Profile/Profile";
 import AlumniForum from "./components/AlumniForum/AlumniForum";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-
-
+import BreakDown from "./components/Graphs";
 
 const App = () => {
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -19,7 +18,7 @@ const App = () => {
                 <Switch>
                     <Route path="/posts" exact component={Home}/>
                     <Route path="/posts/alumni" exact component={AlumniForum}/>
-                    
+                    <Route path="/breakdown" exact component={BreakDown}/>
                     <Route path="/profile" exact component={Profile}/>
                     <Route path="/" exact component={() => (!user ? <Auth /> : <Redirect to="/posts" />)} />
                 </Switch>
