@@ -6,6 +6,8 @@ const userSchema = mongoose.Schema({
     password: {type: String, required: true},
     batch: {type: String, required: true},
     major: {type: String, required: true},
+    gradschool: {type: Boolean, required: true},
+    employed: {type: Boolean, required: true},
     id: {type: String},
 
 });

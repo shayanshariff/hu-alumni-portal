@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {Avatar, Button, Paper, Grid, Typography, Container} from "@material-ui/core";
+import Select from '@material-ui/core/Select';
 import useStyles from "./styles";
 import Input from "./Input";
 import {signin, signup} from '../../actions/auth';
@@ -39,7 +40,26 @@ const Auth = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
         setShowPassword(false);
     };
-
+/*
+    constructor(){
+        this.state = {
+          major: selectedOptionId
+        }
+      };
+      
+      dropdownChanged(e){
+        this.setState({major: e.target.value});
+      };
+       <Select name="major" value={this.major}  label="Major" onChange={this.dropdownChanged.bind(this)} >
+                                                <option value="DEFAULT" disabled>Choose your major</option>
+                                                <option value="CS">CS</option>
+                                                <option value="CE">CE</option>
+                                                <option value="EE">EE</option>
+                                                <option value="SDP">SDP</option>
+                                                <option value="CND">CND</option>
+                                                <option value="CH">CH</option>
+                                            </Select>
+*/
     return (
         <Container component="main" maxWidth="xs">
             <Paper className={classes.paper} eleveation={3}>
@@ -57,7 +77,11 @@ const Auth = () => {
                             )}
                             <Input name="email" label="HU Email" handleChange={handleChange} type="email"/>
                             
-                            {isSignup && <Input name="major" label="Major" handleChange={handleChange} type="text"/>}
+                            {isSignup &&  <Input name="major" label="Major" handleChange={handleChange} type="text"/>}
+                            
+                                           
+                                        
+                            
                             {isSignup && <Input name="batch" label="Batch" handleChange={handleChange} type="text"/>}
                             <Input name="password" label="Password" handleChange={handleChange} type={showPassword? "text" : "password"} handleShowPassword={handleShowPassword}/>
                             {isSignup && <Input name="confirmPassword" label="Confirm Password" handleChange={handleChange} type="password"/>}

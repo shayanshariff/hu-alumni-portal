@@ -45,7 +45,10 @@ const Navbar = () => {
                         <Typography component={Link} to="/posts/alumni" className={classes.heading} variant="h5" align="center">
                         &nbsp; &nbsp; Alumni Forum
                         </Typography>
-                        <Typography component={Link} to="/Profile" className={classes.heading} variant="h5" align="center">
+                        <Typography component={Link} to="/dashboard" className={classes.heading} variant="h5" align="center">
+                        &nbsp; &nbsp;Dashboard
+                        </Typography>
+                        <Typography component={Link} to="/profile" className={classes.heading} variant="h5" align="center">
                         &nbsp; &nbsp;Profile
                         </Typography>
                 </div>
