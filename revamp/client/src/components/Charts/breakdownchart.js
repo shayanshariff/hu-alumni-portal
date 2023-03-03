@@ -100,7 +100,7 @@ const formattedData = Object.entries(data.studentsByCategory).map(
             modifiers: [["darker", 0.2]],
           }}
           enableArcLinkLabels={!isDashboard}
-          arcLinkLabelsTextColor={"#ffffff"}
+          arcLinkLabelsTextColor={"#4d547d"}
           arcLinkLabelsThickness={2}
           arcLinkLabelsColor={{ from: "color" }}
           arcLabelsSkipAngle={10}
