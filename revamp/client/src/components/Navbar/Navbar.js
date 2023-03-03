@@ -51,6 +51,9 @@ const Navbar = () => {
                         <Typography component={Link} to="/profile" className={classes.heading} variant="h5" align="center">
                         &nbsp; &nbsp;Profile
                         </Typography>
+                        <Typography component={Link} to="/chat" className={classes.heading} variant="h5" align="center">
+                        &nbsp; &nbsp;Chat
+                        </Typography>
                 </div>
                 <Toolbar className={classes.toolbar}>
                     {user?.result? (

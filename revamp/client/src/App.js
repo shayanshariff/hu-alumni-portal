@@ -9,6 +9,7 @@ import Auth from "./components/Auth/Auth";
 import Profile from "./components/Profile/Profile";
 import AlumniForum from "./components/AlumniForum/AlumniForum";
 import Dashboard from "./components/Dashboard";
+import Chat from "./components/chatpage/chat";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
@@ -29,6 +30,7 @@ const App = () => {
                         <Route path="/posts/alumni" exact component={AlumniForum}/>
                         <Route path="/profile" exact component={Profile}/>
                         <Route path="/dashboard" exact component={Dashboard}/>
+                        <Route path="/chat" exact component={Chat}/>
                         <Route path="/" exact component={() => (!user ? <Auth /> : <Redirect to="/posts" />)} />
                     </Switch>
                 </Container>
