@@ -12,6 +12,8 @@ import Dashboard from "./components/Dashboard";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import BreakDown from "./components/Graphs/indexbreakdownchart";
+import barchart from "./components/Graphs/indexbarchart";
 
 
 
@@ -27,6 +29,8 @@ const App = () => {
                     <Switch>
                         <Route path="/posts" exact component={Home}/>
                         <Route path="/posts/alumni" exact component={AlumniForum}/>
+                        <Route path="/breakdown" exact component={BreakDown}/>
+                        <Route path="/barchart" exact component={barchart}/>
                         <Route path="/profile" exact component={Profile}/>
                         <Route path="/dashboard" exact component={Dashboard}/>
                         <Route path="/" exact component={() => (!user ? <Auth /> : <Redirect to="/posts" />)} />
