@@ -6,8 +6,10 @@ const userSchema = mongoose.Schema({
     password: {type: String, required: true},
     batch: {type: String, required: true},
     major: {type: String, required: true},
-    gradschool: {type: Boolean, required: true},
-    employed: {type: Boolean, required: true},
+    location: {type: String},
+    gradschool: {type: Boolean},
+    employed: {type: Boolean},
+    huID: {type: String},
     id: {type: String},
 
 });

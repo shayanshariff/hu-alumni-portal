@@ -1,7 +1,10 @@
 
-import React from "react";
+import React, { useState, useEffect }  from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import FlexBetween from "../Graphs/flexbetween";
+import {useDispatch} from "react-redux";
+import {get} from "../../actions/dashboard";
+import { useSelector } from "react-redux";
 // import {Grid} from "@mui/material";
 import {
   DownloadOutlined,
@@ -21,50 +24,25 @@ import BarChart from "../Charts/barchart";
 
 const Dashboard = () => {
   const theme = useTheme();
+  const dispatch = useDispatch();
+  const [usersList, setUsersList] = useState(null);
+
+    useEffect(() => {
+        dispatch(get());
+    }, []);
+  const data1 = useSelector((users) => users);
+  console.log(data1.dash);
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
 
+  
   const data = {
     students: 548,
     higherStudies: 115,
    alumni: 376,
     employed: 182,
-    updates: [
-      {
-        _id: "05432",
-        name: "Ali Adnan",
-        employed: "Afiniti",
-        grad: "",
-        major: "CS",
-        batch: "2023",
-      },
-      {
-        _id: "04161",
-        name: "Faiz Haseeb",
-        employed: "Microsoft",
-        grad: "Yale",
-        major: "CE",
-        batch: "2022",
-      },
-      {
-        _id: "05582",
-        name: "Shayan Shariff",
-        employed: "",
-        grad: "Trinity College",
-        major: "CH",
-        batch: "2023",
-      },
-      {
-        _id: "0312",
-        name: "Khubaib Sattar",
-        employed: "Ibex",
-        grad: "IBA",
-        major: "SDP",
-        batch: "2020",
-      },
-
-    ],
-  };
-
+    updates: data1.dash
+  }
+  
   const columns = [
     {
       field: "_id",
