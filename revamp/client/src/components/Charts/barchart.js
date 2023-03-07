@@ -38,7 +38,7 @@ const BarChart = ({ isDashboard = false }) => {
         color: colors[i],
       }))
     : [];
-
+  
   return (
     <Box
       height={isDashboard ? "400px" : "100%"}

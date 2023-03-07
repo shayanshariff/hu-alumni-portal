@@ -15,8 +15,9 @@ import { themeSettings } from "./theme";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import BreakDown from "./components/Graphs/indexbreakdownchart";
 import barchart from "./components/Graphs/indexbarchart";
-
-
+// import barChart_students_working from "./components/Graphs/indexbarchart(students working)";
+import Piechart from "./components/Charts/piechart";
+import Bar from "./components/Charts/bar";
 
 const App = () => {
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -34,6 +35,9 @@ const App = () => {
                         <Route path="/barchart" exact component={barchart}/>
                         <Route path="/profile" exact component={Profile}/>
                         <Route path="/dashboard" exact component={Dashboard}/>
+                        <Route path="/piechart" exact component={Piechart}/>
+                        <Route path="/bar" exact component={Bar}/>
+                        {/* <Route path="/barchart(studentsworking)" exact component={barChart_students_working}/> */}
                         <Route path="/chat" exact component={Chat}/>
                         <Route path="/" exact component={() => (!user ? <Auth /> : <Redirect to="/posts" />)} />
                     </Switch>
