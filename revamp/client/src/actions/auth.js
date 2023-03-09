@@ -1,4 +1,4 @@
-import {AUTH} from "../constants/actionTypes";
+import {AUTH, FETCH_USERS} from "../constants/actionTypes";
 import * as api from "../api/index.js";
 
 
@@ -27,3 +27,4 @@ export const signup = (formData, history) => async (dispatch) => {
         console.log(error);
 }
 }
+
