@@ -31,22 +31,42 @@ const Dashboard = () => {
         dispatch(get());
     }, []);
   const data1 = useSelector((users) => users);
-  console.log(data1.dash);
+  const dataUpdates = data1.dash;
+  console.log(Object.entries(dataUpdates));
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
-
+  if(dataUpdates[0]) {
+    console.log(dataUpdates[0].name);}
+  let students = 0;
+  let alumni = 0; 
+  let higherStudies = 0;
+  let employed = 0;
+  for (var key of Object.keys(dataUpdates)) {
+    if(parseInt(dataUpdates[key].batch) < 2023) {
+      students++;
+    }
+    else{
+      alumni++;
+    }
+    if(dataUpdates[key].isgradschool){
+      higherStudies++;
+    }
+    if(dataUpdates[key].isemployed){
+      employed++;
+    }
+  }
   
   const data = {
-    students: 548,
-    higherStudies: 115,
-   alumni: 376,
-    employed: 182,
-    updates: data1.dash
+    students: students,
+    higherStudies: higherStudies,
+   alumni: alumni,
+    employed: employed,
+    updates: dataUpdates
   }
   
   const columns = [
     {
-      field: "_id",
-      headerName: "ID",
+      field: "huID",
+      headerName: "Habib ID",
       flex: 0.5,
     },
     {
@@ -55,12 +75,12 @@ const Dashboard = () => {
       flex: 0.75,
     },
     {
-      field: "employed",
+      field: "employment",
       headerName: "Works At",
       flex: 0.75,
     },
     {
-      field: "grad",
+      field: "gradschool",
       headerName: "Studies At",
       flex: 0.75,
     },
@@ -112,13 +132,12 @@ const Dashboard = () => {
         <StatBox
           title="Students"
           value={data && data.students}
-          increase="+14%"
  
         />
         <StatBox
           title="Alumni"
           value={data && data.alumni}
-          increase="+21%"
+          
           
         />
         <Box
@@ -136,13 +155,13 @@ const Dashboard = () => {
         <StatBox
           title="Higher Studies"
           value={data && data.higherStudies}
-          increase="+5%"
+          
 
         />
         <StatBox
           title="Employed"
           value={data && data.employed}
-          increase="+43%"
+          
 
         />
 
