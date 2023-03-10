@@ -3,26 +3,63 @@ import React from "react";
 import { ResponsivePie } from "@nivo/pie";
 import { Box, Typography, useTheme } from "@mui/material";
 
-const majData = {
+  let students = 0;
+  let CS = 0;
+  let CND = 0; 
+  let SDP = 0;
+  let CE = 0;
+  let CH = 0;
+  let EE = 0;
+
+const sumData = {
   studentsByCategory: {
-    CS: 25,
-    CND: 20,
-    SDP: 43,
-    CE: 12,
-    EE: 28,
-    CH: 22,
+    CS: CS,
+    CND: CND,
+    SDP: SDP,
+    CE: CE,
+    EE: EE,
+    CH: CH,
   },
-  studentsTotal: 150,
+  studentsTotal: students,
 };
 
 export function useGetStudentQuery() {
-  return { data: majData, isLoading: false };
+  return { data: sumData, isLoading: false };
 }
 
-const BreakdownChart = ({ isDashboard = false }) => {
-  const { data = { studentsByCategory: {} }, isLoading = false } = useGetStudentQuery();
+const BreakdownChart = ({ isDashboard = false, majData}) => {
+  //const { data = { studentsByCategory: {} }, isLoading = false } = useGetStudentQuery();
   const theme = useTheme();
-
+  const isLoading = false;
+  if(majData){
+    
+  for (var key of Object.keys(majData)) {
+    if(parseInt(majData[key].batch) < 2023) {
+      console.log("student");
+      sumData.studentsTotal++;
+    }
+    if(majData[key].major === "CS")  {
+      sumData.studentsByCategory.CS++;
+    }
+    else if(majData[key].major === "CND")  {
+      sumData.studentsByCategory.CND++;
+    }
+    else if(majData[key].major === "SDP")  {
+      sumData.studentsByCategory.SDP++;
+    }
+    else if(majData[key].major === "CE")  {
+      sumData.studentsByCategory.CE++;
+    }
+    else if(majData[key].major === "CH")  {
+      sumData.studentsByCategory.CH++;
+    }
+    else if(majData[key].major === "EE")  {
+      sumData.studentsByCategory.EE++;
+    }
+  }
+  
+}
+const data = sumData;
   const colors = [  "#EB73B1",
   "#EBDE7F",
   "#C567EB",

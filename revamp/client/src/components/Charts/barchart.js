@@ -2,27 +2,63 @@ import React from "react";
 import { ResponsiveBar } from "@nivo/bar";
 import { Box, Typography, useTheme } from "@mui/material";
 
+let Pakistan = 0; 
+let Asia = 0;
+let USA = 0; 
+let Europe = 0;
+let Africa = 0; 
+let Canada = 0;
+let students = 0;
+
+
 const countryData = {
   studentsByCategory: {
-    Pakistan: 150,
-    Asia: 50,
-    USA: 40,
-    Europe: 10,
-    Africa: 1,
-    Canada: 10
+    Pakistan: Pakistan,
+    Asia: Asia,
+    USA: USA,
+    Europe: Europe,
+    Africa: Africa,
+    Canada: Canada
 
   },
-  studentsTotal: 261,
+  studentsTotal: students,
 };
 
 export function useGetStudentQuery() {
   return { data: countryData, isLoading: false };
 }
 
-const BarChart = ({ isDashboard = false }) => {
+const BarChart = ({ isDashboard = false, majData }) => {
   const { data = { studentsByCategory: {} }, isLoading = false } = useGetStudentQuery();
   const theme = useTheme();
-
+  if(majData){
+    
+    for (var key of Object.keys(majData)) {
+      if(parseInt(majData[key].location) < 2023) {
+        console.log("student");
+        countryData.studentsTotal++;
+      }
+      if(majData[key].location === "Pakistan")  {
+        countryData.studentsByCategory.Pakistan++;
+      }
+      else if(majData[key].location === "Asia")  {
+        countryData.studentsByCategory.Asia++;
+      }
+      else if(majData[key].location === "USA")  {
+        countryData.studentsByCategory.USA++;
+      }
+      else if(majData[key].location === "Europe")  {
+        countryData.studentsByCategory.Europe++;
+      }
+      else if(majData[key].location === "Africa")  {
+        countryData.studentsByCategory.Africa++;
+      }
+      else if(majData[key].location === "Canada")  {
+        countryData.studentsByCategory.Canada++;
+      }
+    }
+    console.log(countryData);
+  }
   const colors = [  "#EB73B1",
   "#EBDE7F",
   "#C567EB",

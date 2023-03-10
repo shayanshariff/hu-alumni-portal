@@ -32,10 +32,8 @@ const Dashboard = () => {
     }, []);
   const data1 = useSelector((users) => users);
   const dataUpdates = data1.dash;
-  console.log(Object.entries(dataUpdates));
   const isNonMediumScreens = useMediaQuery("(min-width: 1200px)");
-  if(dataUpdates[0]) {
-    console.log(dataUpdates[0].name);}
+
   let students = 0;
   let alumni = 0; 
   let higherStudies = 0;
@@ -150,7 +148,7 @@ const Dashboard = () => {
           <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
             Alumni by location
           </Typography>
-          <BarChart view="sales" isDashboard={true} />
+          <BarChart view="sales" isDashboard={true}  majData={data.updates}/>
         </Box>
         <StatBox
           title="Higher Studies"
@@ -215,7 +213,7 @@ const Dashboard = () => {
           <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
             Alumni by major
           </Typography>
-          <BreakdownChart isDashboard={true} />
+          <BreakdownChart isDashboard={true} majData={data.updates}/>
         </Box>
       </Box>
     </Box>
