@@ -15,7 +15,6 @@ const AlumniForum = () => {
     useEffect(() => {
         
         dispatch(getAlumniPosts());
-        console.log("Alumni");
     }, [currentId, dispatch]);
 
     return(

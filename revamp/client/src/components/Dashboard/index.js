@@ -5,6 +5,7 @@ import FlexBetween from "../Graphs/flexbetween";
 import {useDispatch} from "react-redux";
 import {get} from "../../actions/dashboard";
 import { useSelector } from "react-redux";
+import {Link, useHistory, useLocation} from "react-router-dom";
 // import {Grid} from "@mui/material";
 import {
   DownloadOutlined,
@@ -39,7 +40,7 @@ const Dashboard = () => {
   let higherStudies = 0;
   let employed = 0;
   for (var key of Object.keys(dataUpdates)) {
-    if(parseInt(dataUpdates[key].batch) < 2023) {
+    if(parseInt(dataUpdates[key].batch) > 2023) {
       students++;
     }
     else{
@@ -119,7 +120,7 @@ const Dashboard = () => {
         mt="20px"
         display="grid"
         gridTemplateColumns="repeat(12, 1fr)"
-        gridAutoRows="160px"
+        gridAutoRows="minmax(160px, auto)"
         gap="20px"
         sx={{
           "& > div": { gridColumn: isNonMediumScreens ? undefined : "span 12" },
@@ -130,38 +131,46 @@ const Dashboard = () => {
         <StatBox
           title="Students"
           value={data && data.students}
- 
+          gridColumn={{ xs: "span 6", sm: "span 3", md: "span 3" }}
         />
-        <StatBox
+        <StatBox 
           title="Alumni"
           value={data && data.alumni}
-          
-          
+          gridColumn={{ xs: "span 6", sm: "span 3", md: "span 3" }}
+          gridRow={{ xs: "auto", md: "1 / span 2" }}
         />
         <Box
-          gridColumn="span 8"
-          gridRow="span 2"
+          gridColumn={{ xs: "span 12", md: "span 6", lg: "span 8" }}
+          gridRow={{ xs: "auto", md: "1 / span 2" }}
           backgroundColor={theme.palette.background.alt}
           p="1rem"
-          borderRadius="0.55rem"
+          borderRadius="0.55rem"r
         >
           <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
             Alumni by location
           </Typography>
+          <Box display="flex" flexDirection={{ xs: "column", md: "row" }} justifyContent="space-between">
+            <Typography component={Link} to="/bar" variant="h7" sx={{ color: theme.palette.secondary[100] }}>
+              View by company
+            </Typography>
+            
+          </Box>
+    
           <BarChart view="sales" isDashboard={true}  majData={data.updates}/>
         </Box>
         <StatBox
           title="Higher Studies"
           value={data && data.higherStudies}
-          
-
+          gridColumn={{ xs: "span 6", sm: "span 3", md: "span 3" }}
+          gridRow={{ xs: "auto", md: "1 / span 2" }}
         />
         <StatBox
           title="Employed"
           value={data && data.employed}
-          
-
+          gridColumn={{ xs: "span 6", sm: "span 3", md: "span 3" }}
+          gridRow={{ xs: "auto", md: "1 / span 2" }}
         />
+
 
         {/* ROW 2 */}
         <Box
@@ -213,6 +222,12 @@ const Dashboard = () => {
           <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
             Alumni by major
           </Typography>
+          <Typography component={Link} to={{
+            pathname: "/piechart",
+            state: {dataUpdates}
+            }} variant="h7" sx={{ color: theme.palette.secondary[100] }}>
+              View by status
+            </Typography>
           <BreakdownChart isDashboard={true} majData={data.updates}/>
         </Box>
       </Box>

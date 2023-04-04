@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ResponsiveBar } from '@nivo/bar';
+import BackButton from '../backButton/backButton';
 
 const CS = [
   { id: 'Systems Ld', value: 10 },
@@ -36,6 +37,7 @@ const Bar = () => {
 
   return (
     <>
+      <BackButton/>
       <select onChange={handleFilterChange}>
         <option value="CS">CS</option>
         <option value="CE">CE</option>

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { ResponsivePie } from '@nivo/pie';
+import BackButton from '../backButton/backButton';
+import { useLocation } from 'react-router-dom';
+
 
 const CS = [
   { id: 'Employed', value: 10 },
@@ -21,21 +24,20 @@ const EE = [
 
 const PieChart = () => {
   const [data, setData] = useState(CS);
-
+  const location = useLocation();
+  data = location.state?.dataUpdates;
   const handleFilterChange = (e) => {
     const selectedValue = e.target.value;
-
-    if (selectedValue === 'CS') {
-      setData(CS);
-    } else if (selectedValue === 'CE') {
-      setData(CE);
-    } else {
-      setData(EE);
-    }
+    setData(selectedValue);
   };
-
+  for (var key of Object.keys(data)) {
+    if(parseInt(data[key].batch) < 2023) {
+      console.log("Alumni");
+    }
+  }
   return (
     <>
+    <BackButton/>
       <select onChange={handleFilterChange}>
         <option value="CS">CS</option>
         <option value="CE">CE</option>
