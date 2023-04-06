@@ -6,6 +6,9 @@ import {useDispatch} from "react-redux";
 import {get} from "../../actions/dashboard";
 import { useSelector } from "react-redux";
 import {Link, useHistory, useLocation} from "react-router-dom";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 // import {Grid} from "@mui/material";
 import {
   DownloadOutlined,
@@ -94,6 +97,26 @@ const Dashboard = () => {
       flex: 1,
     },
   ];
+  const downloadPDF = () => {
+    const input = document.getElementById('root');
+  
+    html2canvas(input, { 
+      allowTaint: true,
+      useCORS: true,
+      scrollX: 0,
+      scrollY: -window.scrollY 
+    })
+      .then((canvas) => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'pt', 'a4');
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save('report.pdf');
+      });
+  };
+  
 
   return (
     <Box m="1.5rem 2.5rem">
@@ -101,18 +124,20 @@ const Dashboard = () => {
         {/* <Header title="DASHBOARD" subtitle="Welcome to your dashboard" /> */}
 
         <Box>
-          <Button
-            sx={{
-              backgroundColor: "#EB73B1",
-              color: theme.palette.background.alt,
-              fontSize: "14px",
-              fontWeight: "bold",
-              padding: "10px 20px",
-            }}
-          >
-            <DownloadOutlined sx={{ mr: "10px" }} />
-            Download Reports
-          </Button>
+        <Button
+  sx={{
+    backgroundColor: "#5c2568",
+    color: theme.palette.background.alt,
+    fontSize: "14px",
+    fontWeight: "bold",
+    padding: "10px 20px",
+  }}
+  onClick={downloadPDF}
+>
+  <DownloadOutlined sx={{ mr: "10px" }} />
+  Download Reports
+</Button>
+
         </Box>
       </FlexBetween>
 
@@ -155,7 +180,7 @@ const Dashboard = () => {
             state: {dataUpdates}
             }} variant="h7" sx={{ color: theme.palette.secondary[100] }}>
               View by company
-            </Typography>
+            </Typography >
             
           </Box>
     
