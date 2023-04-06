@@ -18,7 +18,7 @@ import barchart from "./components/Graphs/indexbarchart";
 // import barChart_students_working from "./components/Graphs/indexbarchart(students working)";
 import Piechart from "./components/Charts/piechart";
 import Bar from "./components/Charts/bar";
-
+import StudentList from "./components/Charts/custom";
 const App = () => {
     const user = JSON.parse(localStorage.getItem('profile'));
     //const mode = useSelector((state) => state.global.mode);
@@ -37,6 +37,7 @@ const App = () => {
                         <Route path="/dashboard" exact component={Dashboard}/>
                         <Route path="/piechart" exact component={Piechart}/>
                         <Route path="/bar" exact component={Bar}/>
+                        <Route path="/custom" exact component={StudentList}/>
                         {/* <Route path="/barchart(studentsworking)" exact component={barChart_students_working}/> */}
                         <Route path="/chat" exact component={Chat}/>
                         <Route path="/" exact component={() => (!user ? <Auth /> : <Redirect to="/posts" />)} />

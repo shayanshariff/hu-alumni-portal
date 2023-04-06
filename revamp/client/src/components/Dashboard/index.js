@@ -233,6 +233,12 @@ const Dashboard = () => {
           <Typography variant="h6" sx={{ color: theme.palette.secondary[100] }}>
             New Updates
           </Typography>
+          <Typography component={Link} to={{
+            pathname: "/custom",
+            state: {dataUpdates}
+            }} variant="h7" sx={{ color: theme.palette.secondary[100] }}>
+              Go to advanced filtering
+            </Typography >
           <DataGrid
             // loading={isLoading || !data}
             getRowId={(row) => row._id}
