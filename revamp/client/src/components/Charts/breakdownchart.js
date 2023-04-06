@@ -34,28 +34,28 @@ const BreakdownChart = ({ isDashboard = false, majData}) => {
   if(majData){
     
   for (var key of Object.keys(majData)) {
-    if(parseInt(majData[key].batch) < 2023) {
-      console.log("student");
+    if(parseInt(majData[key].batch) <= 2023) {
       sumData.studentsTotal++;
+      if(majData[key].major === "CS")  {
+        sumData.studentsByCategory.CS++;
+      }
+      else if(majData[key].major === "CND")  {
+        sumData.studentsByCategory.CND++;
+      }
+      else if(majData[key].major === "SDP")  {
+        sumData.studentsByCategory.SDP++;
+      }
+      else if(majData[key].major === "CE")  {
+        sumData.studentsByCategory.CE++;
+      }
+      else if(majData[key].major === "CH")  {
+        sumData.studentsByCategory.CH++;
+      }
+      else if(majData[key].major === "EE")  {
+        sumData.studentsByCategory.EE++;
+      }
     }
-    if(majData[key].major === "CS")  {
-      sumData.studentsByCategory.CS++;
-    }
-    else if(majData[key].major === "CND")  {
-      sumData.studentsByCategory.CND++;
-    }
-    else if(majData[key].major === "SDP")  {
-      sumData.studentsByCategory.SDP++;
-    }
-    else if(majData[key].major === "CE")  {
-      sumData.studentsByCategory.CE++;
-    }
-    else if(majData[key].major === "CH")  {
-      sumData.studentsByCategory.CH++;
-    }
-    else if(majData[key].major === "EE")  {
-      sumData.studentsByCategory.EE++;
-    }
+    
   }
   
 }

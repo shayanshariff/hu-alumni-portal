@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import BackButton from '../backButton/backButton';
+import { useLocation } from 'react-router-dom';
 
 const CS = [
   { id: 'Systems Ld', value: 10 },
@@ -21,8 +22,11 @@ const SDP = [
 ];
 
 const Bar = () => {
+  
+  const location = useLocation();
+  const dataFull = location.state?.dataUpdates;
+  console.log(dataFull);
   const [data, setData] = useState(CS);
-
   const handleFilterChange = (e) => {
     const selectedValue = e.target.value;
 

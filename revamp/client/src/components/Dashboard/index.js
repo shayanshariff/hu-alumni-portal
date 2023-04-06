@@ -150,7 +150,10 @@ const Dashboard = () => {
             Alumni by location
           </Typography>
           <Box display="flex" flexDirection={{ xs: "column", md: "row" }} justifyContent="space-between">
-            <Typography component={Link} to="/bar" variant="h7" sx={{ color: theme.palette.secondary[100] }}>
+            <Typography component={Link} to={{
+            pathname: "/bar",
+            state: {dataUpdates}
+            }} variant="h7" sx={{ color: theme.palette.secondary[100] }}>
               View by company
             </Typography>
             
