@@ -24,6 +24,9 @@ export default makeStyles((theme) => ({
     justifyContent: 'flex-end',
     width: '400px',
   },
+  active: {
+    fontWeight: 'bold',
+  },
   profile: {
     display: 'flex',
     justifyContent: 'space-between',

@@ -36,40 +36,60 @@ const Navbar = () => {
          // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location]);
 
+    
+
     return (
-            <AppBar className={classes.appBar} position="static" color="inherit">
-                <div className={classes.brandContainer}>
-                    <img className={classes.image} src={logo} alt="habib-logo" height="60" />
-                        <Typography component={Link} to="/posts" className={classes.heading} variant="h5" align="center">
-                        &nbsp; &nbsp; Student Forum
-                        </Typography>
-                        <Typography component={Link} to="/posts/alumni" className={classes.heading} variant="h5" align="center">
-                        &nbsp; &nbsp; Alumni Forum
-                        </Typography>
-                        <Typography component={Link} to="/dashboard" className={classes.heading} variant="h5" align="center">
-                        &nbsp; &nbsp;Dashboard
-                        </Typography>
-                        <Typography component={Link} to="/profile" className={classes.heading} variant="h5" align="center">
-                        &nbsp; &nbsp;Profile
-                        </Typography>
-                        <Typography component={Link} to="/chat" className={classes.heading} variant="h5" align="center">
-                        &nbsp; &nbsp;Chat
-                        </Typography>
-                </div>
-                <Toolbar className={classes.toolbar}>
-                    {user?.result? (
-                        <div className={classes.profile}>
-                            <Avatar className={classes.purple} alt={user.result.name}  src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-                            <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
-                            <Button variant="contained" className={classes.logout} onClick={logout} color="gray">Log out</Button>
-                        </div>
-                        
-                    ) :
-                    (
-                        <Button component={Link} to="/" variant="contained" color="gray">Sign in</Button>
-                    )}
-                </Toolbar>
-            </AppBar>
+        <AppBar className={classes.appBar} position="static" color="inherit">
+            <div className={classes.brandContainer}>
+                <img className={classes.image} src={logo} alt="habib-logo" height="60" />
+                <Typography
+                    component={Link}
+                    to="/posts"
+                    className={`${classes.heading} ${location.pathname === '/posts' ? classes.active : ''}`}
+                    variant="h5"
+                    align="center"
+                >
+                    &nbsp; &nbsp; Student Forum
+                </Typography>
+                <Typography
+                    component={Link}
+                    to="/posts/alumni"
+                    className={`${classes.heading} ${location.pathname === '/posts/alumni' ? classes.active : ''}`}
+                    variant="h5"
+                    align="center"
+                >
+                    &nbsp; &nbsp; Alumni Forum
+                </Typography>
+                <Typography
+                    component={Link}
+                    to="/dashboard"
+                    className={`${classes.heading} ${location.pathname === '/dashboard' ? classes.active : ''}`}
+                    variant="h5"
+                    align="center"
+                >
+                    &nbsp; &nbsp;Dashboard
+                </Typography>
+                <Typography
+                    component={Link}
+                    to={{ pathname: '/profile', state: { user } }}
+                    className={`${classes.heading} ${location.pathname === '/profile' ? classes.active : ''}`}
+                    variant="h5"
+                    align="center"
+                >
+                    &nbsp; &nbsp;Profile
+                </Typography>
+                <Typography
+                    component={Link}
+                    to="/chat"
+                    className={`${classes.heading} ${location.pathname === '/chat' ? classes.active : ''}`}
+                    variant="h5"
+                    align="center"
+                >
+                    &nbsp; &nbsp;Chat
+                </Typography>
+            </div>
+            {/*...*/}
+        </AppBar>
     );
 };
 
