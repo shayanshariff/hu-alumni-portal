@@ -23,10 +23,14 @@ const Auth = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(isSignup){
-            dispatch(signup(formData, history));
+            dispatch(signup(formData, history)).then(() => {
+                history.push('/posts');
+              });
         }
         else{
-            dispatch(signin(formData, history));
+            dispatch(signin(formData, history)).then(() => {
+                history.push('/posts');
+              });
         }
         
 
