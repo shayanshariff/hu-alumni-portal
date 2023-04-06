@@ -126,7 +126,7 @@ const Dashboard = () => {
         <Box>
         <Button
   sx={{
-    backgroundColor: "#EB73B1",
+    backgroundColor: "#5c2568",
     color: theme.palette.background.alt,
     fontSize: "14px",
     fontWeight: "bold",
