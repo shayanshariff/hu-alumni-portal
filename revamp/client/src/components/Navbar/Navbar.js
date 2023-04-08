@@ -71,7 +71,7 @@ const Navbar = () => {
                 </Typography>
                 <Typography
                     component={Link}
-                    to={{ pathname: '/profile', state: { user } }}
+                    to={{ pathname: '/profile', state: {user: user?.result } }}
                     className={`${classes.heading} ${location.pathname === '/profile' ? classes.active : ''}`}
                     variant="h5"
                     align="center"

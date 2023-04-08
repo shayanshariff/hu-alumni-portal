@@ -22,11 +22,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Profile = () => {
+const Profile = ({ user: passedUser }) => {
   const classes = useStyles();
   const location = useLocation();
-  const { user } = location.state;
-  const profile = user.result;
+  const profile = location.state?.user;
+  console.log(profile);
+
+  if (!profile) {
+    return <div>No user to display</div>;
+  }
 
   return (
     <div className={classes.root}>

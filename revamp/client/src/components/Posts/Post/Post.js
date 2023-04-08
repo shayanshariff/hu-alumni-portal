@@ -4,18 +4,41 @@ import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import DeleteIcon from "@material-ui/icons/Delete";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import moment from "moment";
-import {useDispatch} from "react-redux";
+import {useDispatch,  useSelector} from "react-redux";
 import {deletePost, likePost} from "../../../actions/posts";
+import { getUserById } from '../../../actions/users';
+import { useState, useEffect} from "react";
+import { Link } from "react-router-dom";
 
 import useStyles from "./styles";
 const Post = ({post, setCurrentId}) => {
     const classes = useStyles();
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+
+    useEffect(() => {
+      if (post.user) {
+        dispatch(getUserById(post.user));
+      }
+    }, [post.user, dispatch]);
+
+
     return (
         <Card className={classes.card}>
             <CardActions className={classes.cardActions}>
             <div className={classes.card}>
-                <Typography variant="h6">{post.user}</Typography>
+            {user ? (
+            <Link
+              to={{
+                pathname: `/profile`,
+                state: { user: user },
+              }}
+              style={{ textDecoration: 'none', color: 'inherit' }}
+            > {user.name}
+            </Link>
+          ) : (
+            <Typography variant="h6">Unknown</Typography>
+          )}
                 <Typography variant="body2">{moment(post.createdOn).fromNow()}</Typography>
             </div>
             <div >

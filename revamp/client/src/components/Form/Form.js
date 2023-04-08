@@ -9,7 +9,7 @@ import {useSelector} from "react-redux";
 const Form = ({currentId, setCurrentId}) => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const [postData, setPostData] = useState({
-        user: user.result.name, title: "", body: "", image: "", forum: "Student"
+        user: user.result._id, title: "", body: "", image: "", forum: "Student"
     });
    
     const post = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId): null);
@@ -34,7 +34,7 @@ const Form = ({currentId, setCurrentId}) => {
 
     const clear = () => {
         setCurrentId(null);
-        setPostData({ title: "", body: "", image: ""})
+        setPostData({ user: user?.result?._id, title: "", body: "", image: "", forum: "Student" });
     }
     return (
         <Paper className={classes.paper}>
