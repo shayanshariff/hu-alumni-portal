@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Button } from '@material-ui/core';
+import { useSelector, useDispatch } from 'react-redux';
+import { followUser, unfollowUser } from '../../actions/users';
 import { useLocation } from 'react-router-dom';
 import { Avatar, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -26,7 +29,30 @@ const Profile = ({ user: passedUser }) => {
   const classes = useStyles();
   const location = useLocation();
   const profile = location.state?.user;
-  console.log(profile);
+
+  const [isFollowing, setIsFollowing] = useState(false);
+  const loggedInUser = JSON.parse(localStorage.getItem('profile'));
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (loggedInUser && profile) {
+      setIsFollowing(loggedInUser.result.following.includes(profile._id));
+    }
+  }, [loggedInUser, profile]);
+
+
+  const handleFollow = async () => {
+    if (isFollowing) {
+      await dispatch(unfollowUser(profile._id));
+      loggedInUser.result.following = loggedInUser.result.following.filter(id => id !== profile._id);
+    } else {
+      await dispatch(followUser(profile._id));
+      loggedInUser.result.following.push(profile._id);
+    }
+  
+    localStorage.setItem('profile', JSON.stringify(loggedInUser));
+    setIsFollowing(!isFollowing);
+  };
+  
 
   if (!profile) {
     return <div>No user to display</div>;
@@ -91,6 +117,15 @@ const Profile = ({ user: passedUser }) => {
           <Typography variant="subtitle1">{profile.huID}</Typography>
         </Grid>
       </Grid>
+      {loggedInUser && loggedInUser.result._id !== profile._id && (
+        <Button
+          variant="contained"
+          color={isFollowing ? 'secondary' : 'primary'}
+          onClick={handleFollow}
+        >
+          {isFollowing ? 'Unfollow' : 'Follow'}
+        </Button>
+      )}
     </div>
   );
 };

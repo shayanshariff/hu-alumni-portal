@@ -22,3 +22,5 @@ export const fetchUserById = (id) => API.get(`/user/${id}`);
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
 export const get = () => API.get('/dashboard');
+export const followUser = (id) => API.patch(`/user/${id}/follow`);
+export const unfollowUser = (id) => API.patch(`/user/${id}/unfollow`);

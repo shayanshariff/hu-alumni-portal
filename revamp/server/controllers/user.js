@@ -62,3 +62,58 @@ export const fetchUserById = async (req, res) => {
       }
 
 };
+
+// controllers/users.js
+
+export const followUser = async (req, res) => {
+    if (!req.userId) {
+      return res.status(401).json({ message: 'Unauthenticated' });
+    }
+  
+    const userToFollow = await User.findById(req.params.id);
+    const currentUser = await User.findById(req.userId);
+    console.log('userToFollow:', userToFollow);
+  console.log('currentUser:', currentUser);
+  
+    if (!userToFollow || !currentUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+  
+    if (userToFollow.followers.includes(req.userId)) {
+      return res.status(400).json({ message: 'You already follow this user' });
+    }
+  
+    userToFollow.followers.push(req.userId);
+    currentUser.following.push(req.params.id);
+  
+    await userToFollow.save();
+    await currentUser.save();
+  
+    res.status(200).json({ message: 'User followed successfully' });
+  };
+  
+  export const unfollowUser = async (req, res) => {
+    if (!req.userId) {
+      return res.status(401).json({ message: 'Unauthenticated' });
+    }
+  
+    const userToUnfollow = await User.findById(req.params.id);
+    const currentUser = await User.findById(req.userId);
+  
+    if (!userToUnfollow || !currentUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+  
+    if (!userToUnfollow.followers.includes(req.userId)) {
+      return res.status(400).json({ message: 'You do not follow this user' });
+    }
+  
+    userToUnfollow.followers.pull(req.userId);
+    currentUser.following.pull(req.params.id);
+  
+    await userToUnfollow.save();
+    await currentUser.save();
+  
+    res.status(200).json({ message: 'User unfollowed successfully' });
+  };
+  

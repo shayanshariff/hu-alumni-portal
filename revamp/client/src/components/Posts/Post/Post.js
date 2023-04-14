@@ -14,27 +14,28 @@ import useStyles from "./styles";
 const Post = ({post, setCurrentId}) => {
     const classes = useStyles();
     const dispatch = useDispatch();
-    const user = useSelector((state) => state.user);
+    const fetchedUsers = useSelector((state) => state.user.fetchedUsers);
 
-    useEffect(() => {
-      if (post.user) {
-        dispatch(getUserById(post.user));
-      }
-    }, [post.user, dispatch]);
+  useEffect(() => {
+    if (post.user && !fetchedUsers[post.user]) {
+      dispatch(getUserById(post.user));
+    }
+  }, [post.user, dispatch, fetchedUsers]);
 
+  const creator = fetchedUsers[post.user];
 
     return (
         <Card className={classes.card}>
             <CardActions className={classes.cardActions}>
             <div className={classes.card}>
-            {user ? (
+            {creator ? (
             <Link
               to={{
                 pathname: `/profile`,
-                state: { user: user },
+                state: { user: creator },
               }}
               style={{ textDecoration: 'none', color: 'inherit' }}
-            > {user.name}
+            > {creator.name}
             </Link>
           ) : (
             <Typography variant="h6">Unknown</Typography>
@@ -56,7 +57,7 @@ const Post = ({post, setCurrentId}) => {
                 <Button size="small" color="primary"onClick={() => dispatch(likePost(post._id))}>
                     <ThumbUpAltIcon fontSize="small"/>
                     &nbsp; Like &nbsp;
-                    {post.likes}
+                    {post.likes.length}
                 </Button>
                 <Button size="small" color="primary"onClick={() => dispatch(deletePost(post._id))}>
                     <DeleteIcon fontSize="small"/>

@@ -44,26 +44,7 @@ const Auth = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
         setShowPassword(false);
     };
-/*
-    constructor(){
-        this.state = {
-          major: selectedOptionId
-        }
-      };
-      
-      dropdownChanged(e){
-        this.setState({major: e.target.value});
-      };
-       <Select name="major" value={this.major}  label="Major" onChange={this.dropdownChanged.bind(this)} >
-                                                <option value="DEFAULT" disabled>Choose your major</option>
-                                                <option value="CS">CS</option>
-                                                <option value="CE">CE</option>
-                                                <option value="EE">EE</option>
-                                                <option value="SDP">SDP</option>
-                                                <option value="CND">CND</option>
-                                                <option value="CH">CH</option>
-                                            </Select>
-*/
+
     return (
         <Container component="main" maxWidth="xs">
             <Paper className={classes.paper} eleveation={3}>
