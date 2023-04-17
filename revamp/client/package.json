@@ -34,7 +34,7 @@
     "react-query": "^3.39.3",
     "react-redux": "^7.2.9",
     "react-router-dom": "^5.3.4",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.1",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2"
   },
@@ -43,8 +43,7 @@
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-},
-
+  },
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -70,7 +69,6 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0"
   },
-  
   "engines": {
     "node": ">=16.0.0"
   }
