@@ -15,6 +15,17 @@ export const getPosts = async (req, res) => {
     }
 };
 
+export const getAllPosts = async (req, res) => {
+    try{
+        const postMessages = (await PostMessage.find());
+
+        res.status(200).json(postMessages);
+    }
+    catch(error){
+        res.status(404).json({message: error.message});
+    }
+};
+
 export const getAlumniPosts = async (req, res) => {
     try{
         const postMessages = (await PostMessage.find({forum: "Alumni"}));
@@ -81,5 +92,14 @@ export const likePost = async (req, res) => {
 
     res.json(updatedPost);
 }
+
+export const getNumPosts = async (req, res) => {
+    try {
+      const numPosts = await PostMessage.countDocuments();
+      res.status(200).json(numPosts);
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
+  };
 
 export default router;

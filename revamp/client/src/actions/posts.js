@@ -1,5 +1,16 @@
-import {FETCH_ALL, CREATE, UPDATE, DELETE, LIKE} from "../constants/actionTypes";
+import {FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, FETCH_NUM_POSTS, FETCH_ALL_POSTS} from "../constants/actionTypes";
 import * as api from "../api/index.js";
+
+export const getAllPosts = () => async (dispatch) => {
+    try {
+        const {data} = await api.fetchAllPosts();
+        dispatch({type: FETCH_ALL, payload: data});
+    }
+    catch(error){
+        console.log(error);
+    }
+    
+}
 
 export const getPosts = () => async (dispatch) => {
     try {
@@ -11,11 +22,10 @@ export const getPosts = () => async (dispatch) => {
     }
     
 }
-
-
 export const getAlumniPosts = () => async (dispatch) => {
     try {
         const {data} = await api.fetchAlumniPosts();
+        
         dispatch({type: FETCH_ALL, payload: data});
         
     }
@@ -60,10 +70,19 @@ export const deletePost = (id) => async (dispatch) =>{
 export const likePost = (id) => async (dispatch) => {
     try {
         const {data} = await api.likePost(id);
-        
+        console.log("data", data);
         dispatch({type: LIKE, payload: data});
     }
     catch(error){
         console.log(error);
     }
 }
+
+export const fetchNumPosts = () => async (dispatch) => {
+    try {
+      const { data } = await api.fetchNumPosts();
+      dispatch({ type: FETCH_NUM_POSTS, payload: data });
+    } catch (error) {
+      console.log(error);
+    }
+  };

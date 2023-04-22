@@ -1,17 +1,18 @@
 import React, { useState, useEffect }  from "react";
 import {Container, Grow, Grid, Card, Typography} from "@material-ui/core";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {getPosts} from "../../actions/posts";
 import Posts from "../Posts/Posts";
 import useStyles from "../../styles";
 import Form from "../Form/Form";
+import Recommendations from '../Recommendations/Recommendations';
+
 
 
 const Home = () => {
     const [currentId, setCurrentId] = useState(null);
     const classes = useStyles();
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(getPosts());
     }, [currentId, dispatch]);
@@ -22,7 +23,7 @@ const Home = () => {
                     <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={3}>
                             <Card className={classes.card}>
-                                <Typography variant="h6" align="center">Following</Typography>
+                                <Recommendations/>
                             </Card>
                         </Grid>
                         <Grid item xs={12} sm={6}>

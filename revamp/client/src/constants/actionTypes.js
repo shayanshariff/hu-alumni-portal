@@ -11,3 +11,6 @@ export const FETCH_USERS_FAILURE = 'FETCH_USERS_FAILURE';
 export const FETCH_USER = 'FETCH_USER';
 export const FOLLOW_USER = 'FOLLOW_USER';
 export const UNFOLLOW_USER = 'UNFOLLOW_USER';
+export const FETCH_USER_DATA = 'FETCH_USER_DATA';
+export const FETCH_NUM_POSTS = "FETCH_NUM_POSTS";
+export const FETCH_ALL_POSTS = "FETCH_ALL_POSTS";

@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from "../models/user.js";
+import PostMessage from '../models/postMessage.js';
 
 
 
@@ -63,7 +64,7 @@ export const fetchUserById = async (req, res) => {
 
 };
 
-// controllers/users.js
+
 
 export const followUser = async (req, res) => {
     if (!req.userId) {
@@ -117,3 +118,45 @@ export const followUser = async (req, res) => {
     res.status(200).json({ message: 'User unfollowed successfully' });
   };
   
+  export const getUserData = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const user = await User.findById(id);
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      const posts = await PostMessage.find({ user: id });
+      const likes = posts.reduce((acc, post) => {
+        acc[post._id] = post.likes;
+        return acc;
+      }, {});
+      
+      res.status(200).json({ following: user.following, followers: user.followers, likes });
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching user data', error });
+    }
+  };
+
+  export const fetchUserLikes = async (req, res) => {
+    try {
+      const { id } = req.params;
+      const posts = await PostMessage.find({ likes: id });
+  
+      const postIds = posts.map(post => post._id);
+  
+      res.status(200).json(postIds);
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  };
+
+  export const getUsers = async (req, res) => {
+    try {
+      const users = await User.find();
+      res.status(200).json(users);
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
+  };

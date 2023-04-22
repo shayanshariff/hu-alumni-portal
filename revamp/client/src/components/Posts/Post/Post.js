@@ -15,14 +15,12 @@ const Post = ({post, setCurrentId}) => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const fetchedUsers = useSelector((state) => state.user.fetchedUsers);
-
   useEffect(() => {
     if (post.user && !fetchedUsers[post.user]) {
       dispatch(getUserById(post.user));
     }
   }, [post.user, dispatch, fetchedUsers]);
-
-  const creator = fetchedUsers[post.user];
+  const creator = fetchedUsers.find(p => p._id === post.user);
 
     return (
         <Card className={classes.card}>

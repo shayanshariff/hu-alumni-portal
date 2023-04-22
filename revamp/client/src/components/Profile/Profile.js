@@ -29,7 +29,7 @@ const Profile = ({ user: passedUser }) => {
   const classes = useStyles();
   const location = useLocation();
   const profile = location.state?.user;
-
+  console.log("profile", profile);
   const [isFollowing, setIsFollowing] = useState(false);
   const loggedInUser = JSON.parse(localStorage.getItem('profile'));
   const dispatch = useDispatch();

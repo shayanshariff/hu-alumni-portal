@@ -1,18 +1,22 @@
-import {FETCH_ALL, CREATE, UPDATE, DELETE, LIKE} from "../constants/actionTypes";
+import {FETCH_ALL, CREATE, UPDATE, DELETE, LIKE, FETCH_NUM_POSTS} from "../constants/actionTypes";
 
-export default (posts= [], action) => {
+const posts = (state = { posts: [], numPosts: 0 }, action) => {
     switch (action.type) {
         case FETCH_ALL:
-            return action.payload;
+            return { ...state, posts: action.payload };
         case UPDATE:
         case LIKE:
-            return posts.map((post) => post._id === action.payload._id ? action.payload : post);
+            return { ...state, posts: state.posts.map((post) => (post._id === action.payload._id ? action.payload : post)) };
 
         case CREATE:
-            return [...posts, action.payload];
+            return { ...state, posts: [...state.posts, action.payload] };
         case DELETE:
-            return posts.filter((post) => post._id !== action.payload);
+            return { ...state, posts: state.posts.filter((post) => post._id !== action.payload) };
+        case FETCH_NUM_POSTS:
+            return { ...state, numPosts: action.payload };
         default:
-            return posts;
+            return state;
     }
 }
+
+export default posts;
