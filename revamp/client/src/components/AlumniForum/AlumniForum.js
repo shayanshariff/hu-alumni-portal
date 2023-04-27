@@ -5,6 +5,8 @@ import {getAlumniPosts} from "../../actions/posts";
 import Posts from "../Posts/Posts";
 import useStyles from "../../styles";
 import AlumniForm from "../AlumniForm/AlumniForm";
+import Recommendations from '../Recommendations/Recommendations';
+
 
 
 const AlumniForum = () => {
@@ -22,8 +24,8 @@ const AlumniForum = () => {
                 <Container>
                     <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={3}>
-                            <Card className={classes.card}>
-                                <Typography variant="h6" align="center">Following</Typography>
+                        <Card className={classes.card}>
+                                <Recommendations/>
                             </Card>
                         </Grid>
                         <Grid item xs={12} sm={6}>
