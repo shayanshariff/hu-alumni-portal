@@ -12,18 +12,7 @@ app.use(cors());
 
 app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
-<<<<<<< Updated upstream
-=======
-app.use(cors());
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    next();
-  });
-
->>>>>>> Stashed changes
 app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
 app.use('/dashboard', dashRoutes);

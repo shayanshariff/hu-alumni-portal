@@ -27,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     marginRight: theme.spacing(1),
   },
+  followButtonContainer: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+  },
 }));
 
 const Profile = ({ user: passedUser }) => {
@@ -37,7 +41,7 @@ const Profile = ({ user: passedUser }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.get('https://nubela.co/proxycurl/api/v2/linkedin', {
+      const response = await axios.get('https://cors-anywhere.herokuapp.com/https://nubela.co/proxycurl/api/v2/linkedin', {
         url: profileUrl,
         headers: {
           'Authorization': `Bearer ${API_KEY}`,
@@ -143,37 +147,39 @@ const Profile = ({ user: passedUser }) => {
           </Typography>
           <Typography variant="subtitle1">{profile.huID}</Typography>
         </Grid>
-        <form onSubmit={handleSubmit}>
-        <label>
-          LinkedIn Profile URL:
-          <input type="text" value={profileUrl} onChange={(event) => setProfileUrl(event.target.value)} />
-        </label>
-        <button type="submit">Search</button>
-      </form>
-      {profileData && (
-        <div>
-          <h2>{profileData.full_name}</h2>
-          <p>{profileData.occupation}</p>
-          {/* display other profile data */}
-        </div>
-      )}
-      {error && (
-        <p>{error}</p>
-      )}
+        <Grid item xs={12}>
+          <form onSubmit={handleSubmit}>
+            <label>
+              LinkedIn Profile URL:
+              <input type="text" value={profileUrl} onChange={(event) => setProfileUrl(event.target.value)} />
+            </label>
+            <button type="submit">Search</button>
+          </form>
+          {profileData && (
+            <div>
+              <h2>{profileData.full_name}</h2>
+              <p>{profileData.occupation}</p>
+              {/* display other profile data */}
+            </div>
+          )}
+          {error && (
+            <p>{error}</p>
+          )}
+        </Grid>
+        {loggedInUser && loggedInUser.result._id !== profile._id && (
+          <Grid item xs={12} className={classes.followButtonContainer}>
+            <Button
+              variant="contained"
+              color={isFollowing ? 'secondary' : 'primary'}
+              onClick={handleFollow}
+            >
+              {isFollowing ? 'Unfollow' : 'Follow'}
+            </Button>
+          </Grid>
+        )}
       </Grid>
-      {loggedInUser && loggedInUser.result._id !== profile._id && (
-        <Button
-          variant="contained"
-          color={isFollowing ? 'secondary' : 'primary'}
-          onClick={handleFollow}
-        >
-          {isFollowing ? 'Unfollow' : 'Follow'}
-        </Button>
-      )}
     </div>
-     
   );
 };
-
 
 export default Profile;
