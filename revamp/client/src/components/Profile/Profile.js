@@ -6,6 +6,10 @@ import { useLocation } from 'react-router-dom';
 import { Avatar, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
+import axios from 'axios';
+
+const API_KEY = 'LTSm2poHsgDnzud7JYITkg	';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,6 +30,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Profile = ({ user: passedUser }) => {
+  const [profileUrl, setProfileUrl] = useState('');
+  const [profileData, setProfileData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.get('https://nubela.co/proxycurl/api/v2/linkedin', {
+        url: profileUrl,
+        headers: {
+          'Authorization': `Bearer ${API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      setProfileData(response.data);
+      setError(null);
+    } catch (error) {
+      console.error(error);
+      setError('Error fetching person profile');
+      setProfileData(null);
+    }
+  };
+
   const classes = useStyles();
   const location = useLocation();
   const profile = location.state?.user;
@@ -116,6 +143,23 @@ const Profile = ({ user: passedUser }) => {
           </Typography>
           <Typography variant="subtitle1">{profile.huID}</Typography>
         </Grid>
+        <form onSubmit={handleSubmit}>
+        <label>
+          LinkedIn Profile URL:
+          <input type="text" value={profileUrl} onChange={(event) => setProfileUrl(event.target.value)} />
+        </label>
+        <button type="submit">Search</button>
+      </form>
+      {profileData && (
+        <div>
+          <h2>{profileData.full_name}</h2>
+          <p>{profileData.occupation}</p>
+          {/* display other profile data */}
+        </div>
+      )}
+      {error && (
+        <p>{error}</p>
+      )}
       </Grid>
       {loggedInUser && loggedInUser.result._id !== profile._id && (
         <Button
@@ -127,7 +171,9 @@ const Profile = ({ user: passedUser }) => {
         </Button>
       )}
     </div>
+     
   );
 };
+
 
 export default Profile;
