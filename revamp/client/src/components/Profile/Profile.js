@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
 import axios from 'axios';
 
-const API_KEY = 'LTSm2poHsgDnzud7JYITkg	';
+const API_KEY = 'LTSm2poHsgDnzud7JYITkg';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +41,7 @@ const Profile = ({ user: passedUser }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.get('https://cors-anywhere.herokuapp.com/https://nubela.co/proxycurl/api/v2/linkedin', {
+      const response = await axios.get('https://cors-anywhere.herokuapp.com/https://nubela.co/proxycurl/api/v2/linkedin?url=${profileUrl}&fallback_to_cache=true', {
         url: profileUrl,
         headers: {
           'Authorization': `Bearer ${API_KEY}`,
