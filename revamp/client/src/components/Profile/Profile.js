@@ -8,7 +8,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
 import axios from 'axios';
 
-const API_KEY = 'LTSm2poHsgDnzud7JYITkg';
+
+// import ProxycurlApi from 'proxycurl-js-linkedin-profile-scraper';
+
+// let defaultClient = ProxycurlApi.ApiClient.instance;                  // LinkedIN API
+// let BearerAuth = defaultClient.authentications['BearerAuth'];
+// BearerAuth.accessToken = 'LTSm2poHsgDnzud7JYITkg';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -34,28 +39,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Profile = ({ user: passedUser }) => {
-  const [profileUrl, setProfileUrl] = useState('');
-  const [profileData, setProfileData] = useState(null);
-  const [error, setError] = useState(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.get('https://cors-anywhere.herokuapp.com/https://nubela.co/proxycurl/api/v2/linkedin?url=${profileUrl}&fallback_to_cache=true', {
-        url: profileUrl,
-        headers: {
-          'Authorization': `Bearer ${API_KEY}`,
-          'Content-Type': 'application/json'
-        }
-      });
-      setProfileData(response.data);
-      setError(null);
-    } catch (error) {
-      console.error(error);
-      setError('Error fetching person profile');
-      setProfileData(null);
-    }
-  };
+
+
+  // const [profileUrl, setProfileUrl] = useState('');
+  // const [profileData, setProfileData] = useState(null);
+  // const [error, setError] = useState(null);
+
+  // let apiInstance = new ProxycurlApi.PeopleAPIApi();
+  // let url = profileUrl;
+  // let fallbackToCache = 'on-error';s
+  // let opts = {
+  //   'useCache': 'if-present', 
+  //   'skills': 'exclude', 
+  //   'inferredSalary': 'exclude',                   //LinkedIn API 45-70
+  //   'personalEmail': 'exclude', 
+  //   'personalContactNumber': 'exclude',
+  //   'twitterProfileId': 'exclude', 
+  //   'facebookProfileId': 'exclude', 
+  //   'githubProfileId': 'exclude', 
+  //   'extra': 'exclude' 
+  // };
+
+  // apiInstance.personProfileEndpoint(url, fallbackToCache, opts, (error, data, response) => {
+  //   if (error) {
+  //     console.error(error);
+  //   } else {
+  //     console.log('API called successfully. Returned data: ' + data);
+  //   }
+  // });
 
   const classes = useStyles();
   const location = useLocation();
@@ -148,7 +160,7 @@ const Profile = ({ user: passedUser }) => {
           <Typography variant="subtitle1">{profile.huID}</Typography>
         </Grid>
         <Grid item xs={12}>
-          <form onSubmit={handleSubmit}>
+          {/* <form onSubmit={handleSubmit}>
             <label>
               LinkedIn Profile URL:
               <input type="text" value={profileUrl} onChange={(event) => setProfileUrl(event.target.value)} />
@@ -157,14 +169,14 @@ const Profile = ({ user: passedUser }) => {
           </form>
           {profileData && (
             <div>
-              <h2>{profileData.full_name}</h2>
-              <p>{profileData.occupation}</p>
-              {/* display other profile data */}
+              <h2>{data.full_name}</h2> 
+              <p>{data.occupation}</p>
+              <p></p>
             </div>
           )}
           {error && (
             <p>{error}</p>
-          )}
+          )} */}
         </Grid>
         {loggedInUser && loggedInUser.result._id !== profile._id && (
           <Grid item xs={12} className={classes.followButtonContainer}>
