@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import Chat from '../models/chatSchema.js';
 import User from '../models/user.js';
-import { io } from '../index.js';
+
 
 export const createChat = async (req, res) => {
   const { participants } = req.body;
@@ -55,6 +55,7 @@ export const getChatById = async (req, res) => {
 export const addMessageToChat = async (req, res) => {
   const { chatId } = req.params;
   const { sender, content } = req.body;
+  const io = req.app.io; 
 
   try {
     // Find the chat by its ID
