@@ -52,10 +52,13 @@ const EditProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedUserData = { ...userData, skills: [skills.join('\n')] };
+    console.log('Before updating:', userData.location);
+    console.log('After updating:', updatedUserData.location);
     await dispatch(updateUser(loggedInUser.result._id, updatedUserData));
     localStorage.setItem('profile', JSON.stringify({ ...loggedInUser, result: updatedUserData }));
     history.push({ pathname: `/profile`, state: { user: updatedUserData } });
   };
+  
 
   return (
     <div className={classes.root}>
