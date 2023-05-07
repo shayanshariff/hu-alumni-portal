@@ -28,4 +28,5 @@ export const fetchUsers = () => API.get('/user');
 export const followUser = (id) => API.patch(`/user/${id}/follow`);
 export const unfollowUser = (id) => API.patch(`/user/${id}/unfollow`);
 export const fetchUserData = (id) => API.get(`/user/data/${id}`);
+export const updateUser = (id, updatedData) => API.patch(`/user/${id}`, updatedData);
 export const fetchAllPosts = () => API.get('/posts/all');

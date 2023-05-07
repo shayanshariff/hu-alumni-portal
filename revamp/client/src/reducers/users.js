@@ -1,4 +1,4 @@
-import { FETCH_USERS, AUTH, LOGOUT, FOLLOW_USER, UNFOLLOW_USER, FETCH_USER_DATA } from '../constants/actionTypes';
+import { FETCH_USERS, AUTH, LOGOUT, UPDATE_USER, FOLLOW_USER, UNFOLLOW_USER, FETCH_USER_DATA } from '../constants/actionTypes';
 
 const initialState = {
   fetchedUsers: [], // Make sure fetchedUsers is initialized as an array
@@ -12,6 +12,11 @@ const userReducer = (state = initialState, action) => {
     case UNFOLLOW_USER:
       localStorage.setItem('profile', JSON.stringify({ ...action?.payload }));
       return { ...state, authData: action.payload };
+    case UPDATE_USER:
+        return {
+          ...state,
+          fetchedUsers: state.fetchedUsers.map((user) => (user._id === action.payload._id ? action.payload : user)),
+        };
     case FETCH_USER_DATA:
       return {
         ...state,

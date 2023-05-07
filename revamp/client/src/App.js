@@ -18,6 +18,7 @@ import barchart from "./components/Graphs/indexbarchart";
 // import barChart_students_working from "./components/Graphs/indexbarchart(students working)";
 import Piechart from "./components/Charts/piechart";
 import Bar from "./components/Charts/bar";
+import EditProfile from './components/EditProfile/EditProfile';
 import StudentList from "./components/Charts/custom";
 const App = () => {
     const user = JSON.parse(localStorage.getItem('profile'));
@@ -40,6 +41,7 @@ const App = () => {
                         <Route path="/custom" exact component={StudentList}/>
                         {/* <Route path="/barchart(studentsworking)" exact component={barChart_students_working}/> */}
                         <Route path="/Chat" exact component={Chat}/>
+                        <Route path="/edit-profile" exact component={EditProfile} />
                         <Route path="/" exact component={() => (!user ? <Auth /> : <Redirect to="/posts" />)} />
                     </Switch>
                 </Container>

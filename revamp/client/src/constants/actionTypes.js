@@ -14,3 +14,4 @@ export const UNFOLLOW_USER = 'UNFOLLOW_USER';
 export const FETCH_USER_DATA = 'FETCH_USER_DATA';
 export const FETCH_NUM_POSTS = "FETCH_NUM_POSTS";
 export const FETCH_ALL_POSTS = "FETCH_ALL_POSTS";
+export const UPDATE_USER = "UPDATE_USER";

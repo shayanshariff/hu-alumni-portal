@@ -1,5 +1,5 @@
 import * as api from '../api';
-import { FETCH_USER,FOLLOW_USER, UNFOLLOW_USER, FETCH_USER_DATA , FETCH_USERS} from '../constants/actionTypes';
+import { FETCH_USER,FOLLOW_USER, UPDATE_USER, UNFOLLOW_USER, FETCH_USER_DATA , FETCH_USERS} from '../constants/actionTypes';
 
 export const getUserById = (id) => async (dispatch) => {
   try {
@@ -13,6 +13,14 @@ export const getUserById = (id) => async (dispatch) => {
   }
 };
 
+export const updateUser = (id, updatedData) => async (dispatch) => {
+  try {
+    const { data } = await api.updateUser(id, updatedData);
+    dispatch({ type: UPDATE_USER, payload: data });
+  } catch (error) {
+    console.log('Error updating user:', error);
+  }
+};
 
 export const followUser = (id) => async (dispatch) => {
   try {
