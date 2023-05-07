@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
 
 export default makeStyles((theme) => ({
-  appBar: {
+  NavBar: {
     borderRadius: 0,
     margin: '0 0 30px 0',
     display: 'flex',
@@ -12,8 +12,9 @@ export default makeStyles((theme) => ({
     backgroundColor: '#5c2568',
     padding: '10px 50px',
   },
+
   heading: {
-    color: 'white',
+    color: 'black',
     textDecoration: 'none',
   },
   image: {
