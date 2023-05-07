@@ -4,6 +4,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import Navbar from "./components/Navbar/Navbar"
+import Box from "@material-ui/core/Box";
 import Home from "./components/Home/Home";
 import Auth from "./components/Auth/Auth";
 import Profile from "./components/Profile/Profile";
@@ -47,7 +48,6 @@ const App = () => {
                 </Container>
             </ThemeProvider>
         </BrowserRouter>
-        
     );
 }
 
