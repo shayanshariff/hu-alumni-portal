@@ -31,6 +31,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Profile = ({ user: passedUser }) => {
+
+  const [profileUrl, setProfileUrl] = useState('');
+  const [profileData, setProfileData] = useState(null);
+  const [error, setError] = useState(null);
+
   const classes = useStyles();
   const location = useLocation();
   const profile = location.state?.user;
@@ -125,6 +130,25 @@ const Profile = ({ user: passedUser }) => {
         <Typography variant="subtitle1">{profile.employment}</Typography>
       </Grid>
     )}
+      <Grid item xs={12}>
+      <form onSubmit={handleSubmit}>
+        <label>
+          LinkedIn Profile URL:
+          <input type="text" value={profileUrl} onChange={(event) => setProfileUrl(event.target.value)} />
+        </label>
+        <button type="submit">Search</button>
+      </form>
+      {profileData && (
+        <div>
+          <h2>{data.full_name}</h2> 
+          <p>{data.occupation}</p>
+          <p></p>
+        </div>
+      )}
+      {error && (
+        <p>{error}</p>
+      )}
+    </Grid>
     <Grid item xs={12} sm={6}>
       <Typography className={classes.subtitle} variant="subtitle1">
         HU ID:
