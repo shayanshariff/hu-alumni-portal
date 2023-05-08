@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {AppBar, Avatar, Button, Toolbar, Typography} from "@material-ui/core";
-import logo from "../../images/habib.png";
+import logo from "../../images/habib_logo.png";
 import useStyles from "./styles";
 import {Link, useHistory, useLocation} from "react-router-dom";
 import * as actionType from '../../constants/actionTypes';

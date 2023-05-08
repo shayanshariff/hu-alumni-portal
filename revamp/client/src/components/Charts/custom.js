@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { Typography, Grid, Select, MenuItem } from "@mui/material";
+import { Typography, Grid, Select, MenuItem, Button } from "@mui/material";
 import { useLocation } from 'react-router-dom';
 import BackButton from '../backButton/backButton';
+import Papa from "papaparse";
+
 
 const columns = [
   {
@@ -64,10 +66,26 @@ export default function StudentList() {
     .filter((row) => !batchFilter || row.batch === batchFilter)
     .filter((row) => !majorFilter || row.major === majorFilter);
 
+    const handleDownload = () => {
+      const csv = Papa.unparse(filteredRows);
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.setAttribute("href", url);
+      link.setAttribute("download", "students.csv");
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    };
+    
   return (
     <>
     <BackButton/>
     <Typography variant="h1">Student List</Typography>
+    <Button variant="contained" onClick={handleDownload}>
+        Download CSV
+      </Button>
       <Grid container spacing={2}>
       <Grid item xs={2}>
       <div>
@@ -174,10 +192,10 @@ export default function StudentList() {
         </MenuItem>
       ))}
     </Select>
+    
   </div>
   </Grid>
   </Grid>
-
   <div style={{ height: 400, width: "100%" }}>
     <DataGrid getRowId={(row) => row._id} 
     autoHeight
