@@ -7,6 +7,7 @@ import { Avatar, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
 import axios from 'axios';
+import { getProfileData } from '../../api/linkedin.js'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,9 +33,18 @@ const useStyles = makeStyles((theme) => ({
 
 const Profile = ({ user: passedUser }) => {
 
-  const [profileUrl, setProfileUrl] = useState('');
-  const [profileData, setProfileData] = useState(null);
-  const [error, setError] = useState(null);
+  const [inputValue, setInputValue] = useState('');
+  const [jsonResult, setJsonResult] = useState(null);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const result = getProfileData(inputValue);
+    setJsonResult(result);
+  };
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
   const classes = useStyles();
   const location = useLocation();
@@ -43,6 +53,7 @@ const Profile = ({ user: passedUser }) => {
   const [isFollowing, setIsFollowing] = useState(false);
   const loggedInUser = JSON.parse(localStorage.getItem('profile'));
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (loggedInUser && profile) {
       setIsFollowing(loggedInUser.result.following.includes(profile._id));
@@ -130,24 +141,20 @@ const Profile = ({ user: passedUser }) => {
         <Typography variant="subtitle1">{profile.employment}</Typography>
       </Grid>
     )}
-      <Grid item xs={12}>
+    <Grid item xs={12}>
+    <div>
       <form onSubmit={handleSubmit}>
-        <label>
-          LinkedIn Profile URL:
-          <input type="text" value={profileUrl} onChange={(event) => setProfileUrl(event.target.value)} />
-        </label>
-        <button type="submit">Search</button>
+        <input type="text" value={inputValue} onChange={handleChange} />
+        <button type="submit">Submit</button>
       </form>
-      {profileData && (
+
+      {jsonResult && (
         <div>
-          <h2>{data.full_name}</h2> 
-          <p>{data.occupation}</p>
-          <p></p>
+          <h2>JSON Result:</h2>
+          <pre>{JSON.stringify(jsonResult, null, 2)}</pre>
         </div>
       )}
-      {error && (
-        <p>{error}</p>
-      )}
+    </div>
     </Grid>
     <Grid item xs={12} sm={6}>
       <Typography className={classes.subtitle} variant="subtitle1">

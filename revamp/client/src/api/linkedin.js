@@ -1,12 +1,13 @@
-import ProxycurlApi from 'proxycurl-js-linkedin-profile-scraper';
+import Person from 'proxycurl-js-linkedin-profile-scraper';
+import PersonEndpointResponse from 'proxycurl-js-linkedin-profile-scraper/dist/model/PersonEndpointResponse';
 
-let defaultClient = ProxycurlApi.ApiClient.instance;
+let defaultClient = PersonEndpointResponse.ApiClient.instance;
 let BearerAuth = defaultClient.authentications['BearerAuth'];
 BearerAuth.accessToken = 'LTSm2poHsgDnzud7JYITkg';
 
 module.exports = {
   getProfileData: async (url) => {
-    let apiInstance = new ProxycurlApi.PeopleAPIApi();
+    let apiInstance = new PersonEndpointResponse.PeopleAPIApi();
     let fallbackToCache = 'on-error';
     let opts = {
         'useCache': 'if-present', 
