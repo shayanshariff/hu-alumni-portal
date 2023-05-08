@@ -140,24 +140,26 @@ export const followUser = async (req, res) => {
   };
 
   // Add this new function to your user controller
-export const updateUser = async (req, res) => {
-  const { id } = req.params;
-  const { name, email, batch, major, skills } = req.body;
-
-  try {
-    const user = await User.findById(id);
-
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+  export const updateUser = async (req, res) => {
+    const { id } = req.params;
+    const { name, email, batch, major, skills, location } = req.body; // Add the location field here
+  
+    try {
+      const user = await User.findById(id);
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Include the location field when updating the user
+      const updatedUser = await User.findByIdAndUpdate(id, { name, email, batch, major, skills, location }, { new: true });
+  
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      res.status(500).json({ message: 'Error updating user', error });
     }
-
-    const updatedUser = await User.findByIdAndUpdate(id, { name, email, batch, major, skills }, { new: true });
-
-    res.status(200).json(updatedUser);
-  } catch (error) {
-    res.status(500).json({ message: 'Error updating user', error });
-  }
-};
+  };
+  
 
 
   export const fetchUserLikes = async (req, res) => {

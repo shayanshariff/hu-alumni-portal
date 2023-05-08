@@ -22,23 +22,20 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(isSignup){
-            dispatch(signup(formData, history)).then(() => {
-                history.push('/posts');
-              });
+        if (isSignup) {
+          dispatch(signup(formData, history)).then(() => {
+            history.push('/posts');
+          });
+        } else {
+          dispatch(signin(formData, history)).then(() => {
+            history.push('/posts');
+          });
         }
-        else{
-            dispatch(signin(formData, history)).then(() => {
-                history.push('/posts');
-              });
-        }
-        
+      };
 
-    };
-
-    const handleChange = (e) => {
-        setFormData({...formData, [e.target.name]: [e.target.value]});
-    };
+      const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+      };
 
     const switchMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
@@ -58,6 +55,7 @@ const Auth = () => {
                                 <>
                                 <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half/>
                                 <Input name="lastName" label="Last Name" handleChange={handleChange} half/>
+                                <Input name="location" label="Location" handleChange={handleChange} type="text" />
                                 </>
                             )}
                             <Input name="email" label="HU Email" handleChange={handleChange} type="email"/>
