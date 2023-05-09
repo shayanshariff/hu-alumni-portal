@@ -30,3 +30,4 @@ export const unfollowUser = (id) => API.patch(`/user/${id}/unfollow`);
 export const fetchUserData = (id) => API.get(`/user/data/${id}`);
 export const updateUser = (id, updatedData) => API.patch(`/user/${id}`, updatedData);
 export const fetchAllPosts = () => API.get('/posts/all');
+export const fetchProfileData = (url) => API.post('/linkedin/getProfileData', { url });

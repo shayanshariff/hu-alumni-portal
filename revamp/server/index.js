@@ -7,6 +7,7 @@ import postRoutes from './routes/posts.js';
 import userRoutes from './routes/users.js';
 import dashRoutes from './routes/dashboard.js';
 import chatRoutes from './routes/chat.js';
+import linkedinRoutes from './routes/linkedin.js';
 import { Server } from 'socket.io';
 import {createServer} from 'http';
 
@@ -20,6 +21,7 @@ app.use('/posts', postRoutes);
 app.use('/user', userRoutes);
 app.use('/dashboard', dashRoutes);
 app.use('/Chat', chatRoutes);
+app.use('/linkedin', linkedinRoutes);
 
 const CONNECTION_URL = "mongodb+srv://huadmin:liberalcore@cluster0.fmycgav.mongodb.net/?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5001;

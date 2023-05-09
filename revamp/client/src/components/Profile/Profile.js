@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@material-ui/core';
+import { Button, TextField, Card, CardContent, Divider } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import { followUser, unfollowUser } from '../../actions/users';
+import { fetchProfileData } from '../../actions/linkedin';
 import { useLocation, Link } from 'react-router-dom';
 import { Avatar, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { deepPurple } from '@material-ui/core/colors';
-import axios from 'axios';
-import { getProfileData } from '../../api/linkedin.js'
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,12 +35,8 @@ const Profile = ({ user: passedUser }) => {
 
   const [inputValue, setInputValue] = useState('');
   const [jsonResult, setJsonResult] = useState(null);
+  const [linkedinUrl, setLinkedinUrl] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const result = getProfileData(inputValue);
-    setJsonResult(result);
-  };
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -72,6 +68,55 @@ const Profile = ({ user: passedUser }) => {
     localStorage.setItem('profile', JSON.stringify(loggedInUser));
     setIsFollowing(!isFollowing);
   };
+const handleLinkedinUrlChange = (e) => {
+    setLinkedinUrl(e.target.value);
+  };
+
+  const [fetchedData, setFetchedData] = useState(null);
+
+  const handleFetchProfileData = async () => {
+    try {
+      const action = await dispatch(fetchProfileData(linkedinUrl));
+      console.log('Fetched LinkedIn Profile Data:', action.payload);
+      setFetchedData(action.payload); // Set fetched data to state variable
+    } catch (error) {
+      console.error('Error fetching LinkedIn profile data:', error);
+    }
+  };
+
+  const renderSection = (title, data) => {
+    return (
+      <Grid item xs={12} sm={6} md={4}>
+        <Card>
+          <CardContent>
+            <Typography variant="h6" component="h2" gutterBottom>
+              {title}
+            </Typography>
+            <Divider />
+            {data.map((item, index) => {
+              // Define start and end dates
+              const start = new Date(item.starts_at.year, item.starts_at.month - 1, item.starts_at.day);
+              const end = item.ends_at ? new Date(item.ends_at.year, item.ends_at.month - 1, item.ends_at.day) : 'Present';
+              const startDate = `${start.toLocaleString('default', { month: 'long' })} ${start.getFullYear()}`;
+              const endDate = end === 'Present' ? end : `${end.toLocaleString('default', { month: 'long' })} ${end.getFullYear()}`;
+              
+              return (
+                <div key={index} style={{marginBottom: "15px"}}>
+                  <Typography variant="body1">
+                    {title === 'Experiences' && item.title && item.company && `${item.title} at ${item.company}, ${startDate} - ${endDate}`}
+                    {title === 'Education' && item.degree_name && item.field_of_study && item.school && `${item.degree_name} in ${item.field_of_study} at ${item.school}, ${startDate} - ${endDate}`}
+                  </Typography>
+                </div>
+              );
+            })}
+          </CardContent>
+        </Card>
+      </Grid>
+    );
+  };
+  
+  
+  
 
   if (!profile) {
     return <div>No user to display</div>;
@@ -141,21 +186,7 @@ const Profile = ({ user: passedUser }) => {
         <Typography variant="subtitle1">{profile.employment}</Typography>
       </Grid>
     )}
-    <Grid item xs={12}>
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={inputValue} onChange={handleChange} />
-        <button type="submit">Submit</button>
-      </form>
-
-      {jsonResult && (
-        <div>
-          <h2>JSON Result:</h2>
-          <pre>{JSON.stringify(jsonResult, null, 2)}</pre>
-        </div>
-      )}
-    </div>
-    </Grid>
+    
     <Grid item xs={12} sm={6}>
       <Typography className={classes.subtitle} variant="subtitle1">
         HU ID:
@@ -185,7 +216,35 @@ const Profile = ({ user: passedUser }) => {
         </Link>
       </Grid>
     )}
+    {loggedInUser && loggedInUser.result._id === profile._id && (
+  <>
+    <Grid item xs={12}>
+      <TextField
+        label="LinkedIn URL"
+        variant="outlined"
+        fullWidth
+        value={linkedinUrl}
+        onChange={handleLinkedinUrlChange}
+      />
+    </Grid>
+    <Grid item xs={12}>
+      <Button variant="contained" color="primary" onClick={handleFetchProfileData}>
+        Fetch LinkedIn Profile Data
+      </Button>
+      <Typography variant="body2" color="textSecondary">
+        Note: Your LinkedIn profile must be public to fetch your data
+      </Typography>
+    </Grid>
+  </>
+)}
+{fetchedData && (
+          <Grid container spacing={2}>
+            {renderSection('Experiences', fetchedData.experiences)}
+            {renderSection('Education', fetchedData.education)}
+          </Grid>
+        )}
   </Grid>
+  
 </div>
 );
 };
