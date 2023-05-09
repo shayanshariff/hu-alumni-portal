@@ -205,7 +205,9 @@ const handleLinkedinUrlChange = (e) => {
         >
           {isFollowing ? 'Unfollow' : 'Follow'}
         </Button>
+        
       </Grid>
+      
     )}
     {loggedInUser && loggedInUser.result._id === profile._id && (
       <Grid item xs={12} className={classes.followButtonContainer}>
@@ -215,8 +217,9 @@ const handleLinkedinUrlChange = (e) => {
           </Button>
         </Link>
       </Grid>
+      
     )}
-    {loggedInUser && loggedInUser.result._id === profile._id && (
+    {loggedInUser && loggedInUser.result._id !== profile._id && (
   <>
     <Grid item xs={12}>
       <TextField
@@ -244,6 +247,34 @@ const handleLinkedinUrlChange = (e) => {
           </Grid>
         )}
   </Grid>
+  {loggedInUser && loggedInUser.result._id === profile._id && (
+  <>
+    <Grid item xs={12}>
+      <TextField
+        label="LinkedIn URL"
+        variant="outlined"
+        fullWidth
+        value={linkedinUrl}
+        onChange={handleLinkedinUrlChange}
+      />
+    </Grid>
+    <Grid item xs={12}>
+      <Button variant="contained" color="primary" onClick={handleFetchProfileData}>
+        Fetch LinkedIn Profile Data
+      </Button>
+      <Typography variant="body2" color="textSecondary">
+        Note: Your LinkedIn profile must be public to fetch your data
+      </Typography>
+    </Grid>
+  </>
+)}
+{fetchedData && (
+          <Grid container spacing={2}>
+            {renderSection('Experiences', fetchedData.experiences)}
+            {renderSection('Education', fetchedData.education)}
+          </Grid>
+        )}
+
   
 </div>
 );
